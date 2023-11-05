@@ -20,8 +20,8 @@ Link: https://discord.gg/dru9uRYKqq
 
 Crealas tal y cual cada valor de variable es unico y necesario al igual que el nombre.
 
-|    Nombre     |  Valor  | __Importante__: Debees tener dos variables para complementar este codigo que seria 
-| --------------| ------- | tu "dinero" "banco" en economia.
+|    Nombre     |  Valor  | 
+| --------------| ------- | 
 | item          |   {}    |
 | descripcion   |   {}    |
 | requerido     |   {}    |
@@ -35,3 +35,5 @@ Crealas tal y cual cada valor de variable es unico y necesario al igual que el n
 | currency      | :emoji: |
 | role-collect  |   {}    |
 | count-collect |   {}    |
+
+__Importante__: Debees tener dos variables para complementar este codigo que seria tu "dinero" "banco" en economia.

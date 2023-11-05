@@ -1,0 +1,133 @@
+Prefix: !buy-item <name>
+
+Codigo:
+
+$nomention
+$c[rempla@ar aqui]
+$var[variable;dinero]
+$var[variable2;banco]
+$c[remplazar aqui]
+
+$var[cu;$getServerVar[currency]]
+
+$var[s;0]
+$jsonParse[{"n":
+   [$getServerVar[item],
+   $getServerVar[valor;$guildID],
+   $getServerVar[balance],
+   $getUserVar[valor],
+   $getServerVar[stock],
+   $getServerVar[requerido],
+   $getServerVar[dar],
+   $getServerVar[reply]\]}]
+
+$var[o;$repeatMessage[4;$repeatMessage[5;a]]]
+$eval[$replaceText[$var[o];a;
+%{DOL}%var[s\;%{DOL}%sum[%{DOL}%var[s\]\;1\]\]
+%{DOL}%if[%{DOL}%message[1\]==%{DOL}%json[n\;0\;item%{DOL}%var[s\]\]\]
+%{DOL}%var[ñ\;%{DOL}%var[s\]\]
+%{DOL}%endif;-1]]
+$var[reply;$json[n;7;reply$var[ñ]]]
+
+$var[item;$json[n;0;item$var[ñ]]]
+$if[$and[$json[n;2;bal$var[ñ]]!=;$json[n;2;bal$var[ñ]]>$sum[$getUserVar[$var[variable];$authorID];$getUserVar[$var[variable2];$authorID]]]==true]
+$author[$username]
+$authorIcon[$authorAvatar]
+$description[<:xmark:1104944860043165736> Debes tener al menos   $var[cu]$numberSeparator[$json[n;2;bal$var[ñ]]] de saldo de total para comprar este item.]
+$color[c13849]
+$stop
+$elseif[$and[$json[n;3;valor$var[ñ]]!=;$json[n;4;sto$var[ñ]]!=;$json[n;3;valor$var[ñ]]>=$json[n;4;sto$var[ñ]]]==true]
+Limite hasta $json[n;4;sto1]
+$stop
+$elseif[$and[$roleExists[$json[n;5;reqrole$var[ñ]]]==true;$hasRole[$authorID;$json[n;5;reqrole$var[ñ]]]==false]==true]
+$allowRoleMentions[]
+$author[$username]
+$authorIcon[$authorAvatar]
+$description[<:xmark:1104944860043165736>  Necesitas tener el rol <@&$json[n;5;reqrole$var[ñ]]> para comprar este item.]
+$color[c13849]
+$stop
+$endif
+
+
+
+$var[f;$json[n;1;valor$var[ñ]]]
+$if[$message[2]!=]
+$if[$isNumber[$message[2]]==true]
+$var[&;$message[2]]
+$else
+$color[#c13849]
+$description[<:xmark:1104944860043165736>  Se proporcionó un argumento `<option>` no válido.]
+$addField[Uso:;
+`use <item-name> [cantidad\]`]
+$author[$username]
+$authorIcon[$authorAvatar]
+$stop
+$endif
+$else
+$var[&;1]
+$endif
+$if[$var[f]==]
+$var[v;0]
+$else
+$var[v;$var[f]]
+$endif
+$try
+$onlyIf[$getUserVar[$var[variable]]>=$multi[$var[v];$var[&]];]
+$catch
+$author[$username]
+$authorIcon[$authorAvatar]
+$color[c13849]
+$description[Insuficiente dinero. te hace falta para comprar este item. tu saldo $var[cu]$numberSeparator[$getUserVar[$var[variable]]].]
+$addField[Error;
+Dinero requerido: `$numberSeparator[$multi[$var[v];$var[&]]]`, Te hace falta `$replaceText[$numberSeparator[$sub[$getUserVar[$var[variable]];$multi[$var[v];$var[&]]]];-;]`.]
+$stop
+$endtry
+
+
+$if[$message[1]==$json[n;0;item$var[ñ]]]
+$jsonParse[$getUserVar[valor]]
+$if[$json[valor$var[ñ]]==]
+$var[hh;0]
+$else
+$var[hh;$json[valor$var[ñ]]]
+$endif
+
+$try
+$description[<:check:1104944814744682506>  ¡Has comprado $var[&] plátano por $var[cu]$multi[$var[v];$var[&]]! Esto ahora está en su inventario.
+Utilice este elemento con el comando `use`.]
+$color[#66bb6a]
+$author[$username]
+$authorIcon[$authorAvatar]
+$endtry
+$jsonSetString[valor$var[ñ];$sum[$var[&];$var[hh]]]
+$setUserVar[valor;$jsonStringify;$authorID]
+
+$setUserVar[$var[variable];$sub[$getUserVar[$var[variable]];$multi[$var[v];$var[&]]];$authorID]
+$jsonParse[$getUserVar[item]]
+$jsonSetString[item$var[ñ];$var[item]]
+$setUserVar[item;$jsonStringify;$authorID]
+
+$jsonParse[$getServerVar[dar]]
+$var[rol-d;$json[give$var[ñ]]]
+$if[$and[$var[rol-d]!=;$roleExists[$var[rol-d]]==true]==true]
+$jsonParse[$getUserVar[dar]]
+$jsonSetString[give$var[ñ];$var[rol-d]]
+$setUserVar[dar;$jsonStringify;$authorID]
+$endif
+
+$jsonParse[$getServerVar[quitar]]
+$var[rol-q;$json[remover$var[ñ]]]
+$if[$and[$var[rol-q]!=;$roleExists[$var[rol-q]]==true]==true]
+$jsonParse[$getUserVar[quitar]]
+$jsonSetString[remover$var[ñ];$var[rol-q]]
+$setUserVar[quitar;$jsonStringify;$authorID]
+$endif
+
+$else
+$author[$username]
+$authorIcon[$authorAvatar]
+$description[<:xmark:1104944860043165736> No pude encontrar ningún item en la tienda con ese nombre.]
+$color[c13849]
+$stop
+$endif
+

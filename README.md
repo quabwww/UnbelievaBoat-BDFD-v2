@@ -39,14 +39,14 @@ __Importante__: Debees tener dos variables para complementar este codigo que ser
 
 ## Avanzes del resultado
 
-__Crear-item__
+### Crear-item
 Crea los nombre de los items pero no mayor a 30 caracteress esto esta balanceado para usuarios premium y no premium sobre el limite de caracteres en las variables, __tambien que cada espacio que use sera remplazado por "_"__. tenga en cuenta esto.
 
 ![image](https://github.com/quabwww/UnbelievaBoat-BDFD/assets/148601206/3266ff80-de49-4d03-9485-e98dbe47ffbb)
 
-__Edit-item__
+### Edit-item__
 Edita el item ya creado puedes usar el nombre del item dentro de doble comillas.
-Ejemplo: "item_name"
+Ejemplo: `"item_name"`
 
 Opciones disponibles:
 - name, price, value, description,stock, role-required , role-give, role-removed, required-balance, reply

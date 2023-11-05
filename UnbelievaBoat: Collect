@@ -1,0 +1,40 @@
+Prefix: !collect opcional<user>
+
+Codigo:
+
+$nomention
+$if[$getCooldown[normal]>0]
+$description[<:xmark:1104944860043165736> La próxima vez podrás cobrar ingresos en <t:$sub[$getTimestamp;$getCooldown[normal]]:R>.]
+$color[#ef5250]
+$author[$username]
+$authorIcon[$authorAvatar]
+$stop
+$else
+$allowRoleMentions[]
+$var[s;0]
+$var[us;$findUser[$message;true]]
+$author[$username[$var[us]]]
+$authorIcon[$userAvatar[$var[us]]]
+$jsonParse[{"s":[$getUserVar[count-collect;$var[us]], $getUserVar[role-collect;$var[us]]\]}]
+$var[etc;$jsonArrayCount[s]]
+
+
+
+$var[m;
+$trimSpace[
+$var[mk;$repeatMessage[4;$repeatMessage[5;a]]]
+$eval[$replaceText[$var[mk];a;
+%{DOL}%var[meo\;%{DOL}%if[%{DOL}%json[s\;0\;count%{DOL}%var[s\]\]!=\]%{DOL}%json[s\;0\;count%{DOL}%var[s\]\]%{DOL}%endif\]  
+%{DOL}%if[%{DOL}%json[s\;1\;col%{DOL}%var[s\]\]!=\]`%{DOL}%numberSeparator[%{DOL}%var[meo\]\]` - <@&%{DOL}%json[s\;1\;col%{DOL}%var[s\]\]>%{DOL}%endif
+%{DOL}%var[s\;%{DOL}%sum[%{DOL}%var[s\]\;1\]\]
+;-1]]]]
+$if[$trimSpace[$var[m]]==]
+$description[<:xmark:1104944860043165736> ¡No tienes ingresos por roles que cobrar!]
+$color[#ef5250]
+$else
+$color[#66bb6a]
+$description[<:check:1104944814744682506> ¡Los ingresos por roles se recaudaron con éxito!
+$var[m]]
+$endif
+$endif
+$cooldown[5h;]

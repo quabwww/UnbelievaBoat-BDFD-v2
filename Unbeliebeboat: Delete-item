@@ -123,6 +123,18 @@ $eval[$repeatMessage[$sum[1;$var[e]];
 $setServerVar[reply;$jsonStringify;$guildID]
 
 
+$var[n;0]
+$jsonParse[{"tod":
+   [$getServerVar[item]\]}]
+
+$eval[$repeatMessage[10;$repeatMessage[2;
+%{DOL}%if[%{DOL}%json[tod\;0\;item%{DOL}%var[n\]\]!=\]
+%{DOL}%var[total\;1+%{DOL}%var[total\]\]
+%{DOL}%endif
+%{DOL}%var[n\;%{DOL}%sum[%{DOL}%var[n\]\;1\]\]]]]
+$setServerVar[contador;$calculate[$var[total]0];$guildID]
+
+
 $var[¿?;false]
 $if[$var[¿?]==true]
 $c[role-collect >.<]

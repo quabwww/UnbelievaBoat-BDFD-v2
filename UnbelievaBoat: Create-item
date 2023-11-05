@@ -3,8 +3,11 @@ Prefix: !create-item
 Codigo:
 
 $nomention
+$var[s;1]
 $var[msg;$replaceText[$message; ;_]]
 $var[cu;$getServerVar[currency]]
+$jsonParse[$getServerVar[item;$guildID]]
+
 $if[$getServerVar[contador]==11]
 $color[#c13849]
 $authorIcon[$authorAvatar]
@@ -25,6 +28,25 @@ $color[#c13849]
 $stop
 $endif
 
+$eval[$repeatMessage[10;
+%{DOL}%if[%{DOL}%var[msg\]==%{DOL}%json[item%{DOL}%var[s\]\]\]
+%{DOL}%var[value\;true\]
+%{DOL}%endif
+%{DOL}%var[s\;%{DOL}%sum[%{DOL}%var[s\]\;1\]\]
+]]
+
+$if[$var[value]==true]
+$author[$username]
+$authorIcon[$authorAvatar]
+$description[<:xmark:1104944860043165736> Error no puedes crear un Item con el nombre igual a otro.]
+$color[#c13849]
+$stop
+$endif
+
+$jsonParse[$getServerVar[valor]]
+$jsonSetString[valor$getServerVar[contador];0]
+$setServerVar[valor;$jsonStringify]
+
 
 $jsonParse[$getServerVar[item;$guildID]]
 $if[$getServerVar[contador]==1]
@@ -39,6 +61,7 @@ $jsonSetString[item2;$var[msg]]
 <:check:1104944814744682506> ¡Segundo artículo creado exitosamente! 
 $setServerVar[item;$jsonStringify;$guildID]
 $setServerVar[contador;3]
+
 $elseif[$getServerVar[contador]==3]
 $jsonSetString[item3;$var[msg]]
 <:check:1104944814744682506> ¡Tercer artículo creado exitosamente! 

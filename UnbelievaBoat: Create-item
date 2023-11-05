@@ -1,0 +1,126 @@
+Prefix: !create-item
+
+Codigo:
+
+$nomention
+$var[msg;$replaceText[$message; ;_]]
+$var[cu;$getServerVar[currency]]
+$if[$getServerVar[contador]==11]
+$color[#c13849]
+$authorIcon[$authorAvatar]
+$author[$username]
+$description[<:xmark:1104944860043165736>  Error ya has creado 10 items lo siento]
+$addField[Limite;
+`Total items creados: 10`]
+$stop
+$elseif[$message==]
+<:1w:1170354999549759548> ¿Cómo debería llamarse el nuevo artículo?
+Este nombre debe ser único y no tener más de 30 caracteres.
+$stop
+$elseif[$charCount[$var[msg]]>=30]
+$authorIcon[$authorAvatar]
+$author[$username]
+$description[<:xmark:1104944860043165736>  La longitud máxima para el nombre de un elemento es 30 caracteres.]
+$color[#c13849]
+$stop
+$endif
+
+
+$jsonParse[$getServerVar[item;$guildID]]
+$if[$getServerVar[contador]==1]
+$jsonSetString[item1;$var[msg]]
+<:check:1104944814744682506> ¡Primer artículo creado exitosamente! 
+$setServerVar[item;$jsonStringify;$guildID]
+
+$setServerVar[contador;2]
+
+$elseif[$getServerVar[contador]==2]
+$jsonSetString[item2;$var[msg]]
+<:check:1104944814744682506> ¡Segundo artículo creado exitosamente! 
+$setServerVar[item;$jsonStringify;$guildID]
+$setServerVar[contador;3]
+$elseif[$getServerVar[contador]==3]
+$jsonSetString[item3;$var[msg]]
+<:check:1104944814744682506> ¡Tercer artículo creado exitosamente! 
+$setServerVar[item;$jsonStringify;$guildID]
+$setServerVar[contador;4]
+
+$elseif[$getServerVar[contador]==4]
+$jsonSetString[item4;$var[msg]]
+<:check:1104944814744682506> ¡Cuarto artículo creado exitosamente! 
+$setServerVar[item;$jsonStringify;$guildID]
+$setServerVar[contador;5]
+
+
+$elseif[$getServerVar[contador]==5]
+$jsonSetString[item5;$var[msg]]
+<:check:1104944814744682506> ¡Quinto artículo creado exitosamente! 
+$setServerVar[item;$jsonStringify;$guildID]
+$setServerVar[contador;6]
+
+
+$elseif[$getServerVar[contador]==6]
+$jsonSetString[item6;$var[msg]]
+<:check:1104944814744682506> ¡Sexto artículo creado exitosamente! 
+$setServerVar[item;$jsonStringify;$guildID]
+$setServerVar[contador;7]
+
+
+$elseif[$getServerVar[contador]==7]
+$jsonSetString[item7;$var[msg]]
+<:check:1104944814744682506> ¡Septimo artículo creado exitosamente! 
+$setServerVar[item;$jsonStringify;$guildID]
+$setServerVar[contador;8]
+
+
+$elseif[$getServerVar[contador]==8]
+$jsonSetString[item8;$var[msg]]
+<:check:1104944814744682506> ¡Octavo artículo creado exitosamente! 
+$setServerVar[item;$jsonStringify;$guildID]
+$setServerVar[contador;9]
+
+$elseif[$getServerVar[contador]==9]
+$jsonSetString[item9;$var[msg]]
+<:check:1104944814744682506> ¡Noveno artículo creado exitosamente! 
+$setServerVar[item;$jsonStringify;$guildID]
+$setServerVar[contador;10]
+
+$elseif[$getServerVar[contador]==10]
+$jsonSetString[item10;$var[msg]]
+<:check:1104944814744682506> ¡Decimo artículo creado exitosamente! 
+$setServerVar[item;$jsonStringify;$guildID]
+$setServerVar[contador;11]
+$endif
+$title[Item info]
+$addField[Nombre;
+$message;true;1]
+
+$addField[Precio;
+$var[cu]0;true;1]
+
+$addField[Descripcion;
+Ninguno;false;1]
+
+$addField[Esta en tu inventario?;
+No;true;1]
+
+$addField[Stock limite;
+Ninguno;true;1]
+
+$addField[Balance requerido;
+Ninguno;true;1]
+
+$addField[Rol querido;
+Ninguno;true;1]
+
+$addField[Rol a dar;
+Ninguno;true;1]
+
+
+$addField[Rol a quitar;
+Ninguno;true;1]
+
+$addField[Mensaje de respuesta;
+Ninguno;true;1]
+
+$color[#03a8f4]

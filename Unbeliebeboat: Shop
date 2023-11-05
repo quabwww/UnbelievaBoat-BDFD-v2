@@ -4,6 +4,7 @@ Prefix: !shop
 Codigo: 
 
 $nomention
+
 $jsonParse[$getServerVar[item]]
 $if[$json[item1]==]
 $author[$serverName[$guildID] Tienda]
@@ -45,7 +46,7 @@ $var[o;0]
 
 $eval[$replaceText[$var[mk];a;
 %{DOL}%textSplit[%{DOL}%json[n\;%{DOL}%var[o\]\]\;-\]
-%{DOL}%addField[%{DOL}%var[cu\]%{DOL}%numberSeparator[%{DOL}%splitText[1\]\] - %{DOL}%splitText[2\]\;
+%{DOL}%addField[%{DOL}%var[cu\]%{DOL}%numberSeparator[%{DOL}%splitText[1\]\] - %{DOL}%replaceText[%{DOL}%splitText[2\]\;_\; \]\;
 %{DOL}%replaceText[%{DOL}%splitText[3\]\;_\; \]
 ㅤ\;false\;1\]
 

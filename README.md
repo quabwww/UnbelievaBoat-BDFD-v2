@@ -40,5 +40,5 @@ __Importante__: Debees tener dos variables para complementar este codigo que ser
 ## Avanzes del resultado
 
 __Crear-item__
-Crea los nombre de los items pero no mayor a 30 caracteress
+Crea los nombre de los items pero no mayor a 30 caracteress esto esta balanceado para usuarios premium y no premium sobre el limite de caracteres en las variables, __tambien que cada espacio que use sera remplazado por "_"__. tenga en cuenta esto.
 ![image](https://github.com/quabwww/UnbelievaBoat-BDFD/assets/148601206/3266ff80-de49-4d03-9485-e98dbe47ffbb)

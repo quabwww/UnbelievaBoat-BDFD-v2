@@ -54,9 +54,13 @@ Opciones disponibles:
 ![image](https://github.com/quabwww/UnbelievaBoat-BDFD/assets/148601206/508f0024-de62-4c20-b56c-1f7ec713a7f9) ![image](https://github.com/quabwww/UnbelievaBoat-BDFD/assets/148601206/b74b2db6-4d83-407e-8c39-9099b8a51af7)
 
 ## Buy-item
-Compra los items necesarios pero, ¡Cuidado que no tengas dinero!.
+Compra los items necesarios que haiga en la tienda pero, ¡Cuidado que no tengas dinero!.
 
 ![image](https://github.com/quabwww/UnbelievaBoat-BDFD/assets/148601206/05a36ba9-6171-4527-b119-c8bb202c6409)
 
 __Importante__
 
+Debes remplazar los var por las dos variables de "dinero" y "banco" que manejes.
+de los __contrario__ el buy-item no funcionara y seguramente no hara las restas correspondientes en el dinero y balance requeridos.
+
+![image](https://github.com/quabwww/UnbelievaBoat-BDFD/assets/148601206/24f2ada0-737b-401b-ba60-f0484ea3057b)

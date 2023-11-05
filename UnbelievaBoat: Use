@@ -1,0 +1,102 @@
+Prefix: !use
+
+Codigo: 
+$nomention
+$var[s;0]
+$var[n;1]
+$jsonParse[{"m":
+   [$getUserVar[item],
+   $getUserVar[valor],
+   $getServerVar[reply]\]}]
+
+$var[o;$repeatMessage[4;$repeatMessage[5;a]]]
+$eval[$replaceText[$var[o];a;
+%{DOL}%var[s\;%{DOL}%sum[%{DOL}%var[s\]\;1\]\]
+%{DOL}%if[%{DOL}%message[1\]==%{DOL}%json[m\;0\;item%{DOL}%var[s\]\]\]
+%{DOL}%var[ñ\;%{DOL}%var[s\]\]
+%{DOL}%endif;-1]]
+$var[item;$json[m;0;item$var[ñ]]]
+$var[rep;$json[m;2;reply$var[ñ]]]
+$if[$message[2]!=]
+$if[$isNumber[$message[2]]==true]
+$var[va;$message[2]]
+$else
+$color[#c13849]
+$description[<:xmark:1104944860043165736>  Se proporcionó un argumento `<option>` no válido.]
+$addField[Uso:;
+`use <item-name> [cantidad\]`]
+$author[$username]
+$authorIcon[$authorAvatar]
+$stop
+$stop
+$endif
+$else
+$var[va;1]
+$endif
+
+
+$if[$message[1]==$var[item]]
+$if[$json[m;1;valor$var[ñ]]>=$var[va]]
+$jsonParse[$getUserVar[valor]]
+
+$var[rep2;$replaceText[$replaceText[$replaceText[$replaceText[$replaceText[$replaceText[$replaceText[$var[rep];{member.id};$authorID];{member.username};$username];{member.tag};$username#$discriminator[$authorID]];{member.mention};<@$authorID>];{server.id};$guildID];{server.name};$serverName[$guildID]];{server.members};$membersCount]]
+$channelSendMessage[$channelID;$replaceText[$replaceText[$checkCondition[$var[rep]!=];true;$var[rep2];1];false;:beer:;1]]
+$jsonSetString[valor$var[ñ];$sub[$json[valor$var[ñ]];$var[va]]]
+
+$setUserVar[valor;$jsonStringify;$authorID]
+$else
+$author[$username]
+$authorIcon[$authorAvatar]
+$description[<:xmark:1104944860043165736> No tienes esa cantidad de items. Tienes en total: **$json[m;1;valor$var[ñ]]**.]
+$addField[Error;
+Items pedidos: `$var[va]`, Te faltaria `$sub[$var[va];$json[m;1;valor$var[ñ]]]`.]
+$color[c13849]
+$stop
+$endif
+$else
+$color[#c13849]
+$description[<:xmark:1104944860043165736> Se proporcionó un argumento `<item-name>` no válido.]
+$addField[Uso:;
+`use <item-name> [cantidad\]`;false;1]
+$author[$username]
+$authorIcon[$authorAvatar]
+$stop
+$endif
+
+
+$jsonParse[$getUserVar[valor]]
+$var[value;$json[valor$var[ñ]]]
+
+$jsonParse[$getUserVar[dar]]
+$var[role;$findRole[$json[give$var[ñ]]]]
+$if[$and[$roleExists[$var[role]]==true]==true]
+$roleGrant[$authorID;+$var[role]]
+
+$jsonParse[$getUserVar[role-collect]]
+$jsonSetString[col$var[ñ];$var[role]]
+$setUserVar[role-collect;$jsonStringify;$authorID]
+
+$jsonParse[$getUserVar[count-collect]]
+$if[$json[count$var[ñ]]==]
+$var[vc;0]
+$else
+$var[vc;$json[count$var[ñ]]]
+$endif
+$jsonSetString[count$var[ñ];$sum[$var[vc];$var[va]]]
+$setUserVar[count-collect;$jsonStringify;$authorID]
+$endif
+
+$jsonParse[$getUserVar[quitar]]
+$var[role;$findRole[$json[remover$var[ñ]]]]
+$if[$and[$roleExists[$var[role]]==true]==true]
+$roleGrant[$authorID;-$var[role]]
+$endif
+
+$jsonParse[$getUserVar[valor]]
+$if[$var[value]==0]
+$jsonSetString[valor$var[ñ]; ]
+$setUserVar[valor;$jsonStringify]
+$jsonParse[$getUserVar[item]]
+$jsonSetString[item$var[ñ]; ]
+$setUserVar[item;$jsonStringify]
+$endif

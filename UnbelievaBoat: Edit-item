@@ -63,6 +63,16 @@ $description[<:xmark:1104944860043165736>: La longitud máxima para el descripti
 $author[$username]
 $authorIcon[$authorAvatar]
 $color[#c13849]
+
+$elseif[$and[$or[$message[1]==role-give;$message[1]==role-required;$message[1]==role-removed]==true;$roleExists[$var[role]]==true;$or[$message[2]==$var[item];$message[2]=="$var[item]"]==true]==true]
+$if[$rolePosition[$highestRole[$botID]]>=$rolePosition[$var[role]]]
+$description[<:xmark:1104944860043165736> No puedo asignar este rol. 
+Por favor, suba mi rol.]
+$author[$username]
+$authorIcon[$authorAvatar]
+$color[#c13849]
+$stop
+$endif
 $endif
 
 

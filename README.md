@@ -15,12 +15,6 @@ Link: https://discord.gg/dru9uRYKqq
 
 ## Guia tutorial
 
-__Crear-item__
-Crea los nombre de los items pero no mayor a 30 caracteress
-![image](https://github.com/quabwww/UnbelievaBoat-BDFD/assets/148601206/3266ff80-de49-4d03-9485-e98dbe47ffbb)
-
-
-
 ### Variables Necesarias.
 
 Crealas tal y cual cada valor de variable es unico y necesario al igual que el nombre.
@@ -44,3 +38,7 @@ Crealas tal y cual cada valor de variable es unico y necesario al igual que el n
 __Importante__: Debees tener dos variables para complementar este codigo que seria tu "dinero" "banco" en economia.
 
 ## Avanzes del resultado
+
+__Crear-item__
+Crea los nombre de los items pero no mayor a 30 caracteress
+![image](https://github.com/quabwww/UnbelievaBoat-BDFD/assets/148601206/3266ff80-de49-4d03-9485-e98dbe47ffbb)

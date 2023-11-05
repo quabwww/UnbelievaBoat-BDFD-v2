@@ -15,6 +15,11 @@ Link: https://discord.gg/dru9uRYKqq
 
 ## Guia tutorial
 
+__Crear-item__
+Crea los nombre de los items pero no mayor a 30 caracteress
+![image](https://github.com/quabwww/UnbelievaBoat-BDFD/assets/148601206/3266ff80-de49-4d03-9485-e98dbe47ffbb)
+
+
 
 ### Variables Necesarias.
 

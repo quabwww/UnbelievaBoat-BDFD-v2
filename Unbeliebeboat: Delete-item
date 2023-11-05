@@ -1,0 +1,154 @@
+Prefix: !delete-item
+
+Codigo:
+$nomention
+$if[$charCount[$message]==0]
+$authorIcon[$authorAvatar]
+$author[$username]
+$description[<:xmark:1104944860043165736>  Se han dado muy pocos argumentos.]
+$addField[Uso:;
+`delet-item <item-name>`]
+$color[#c13849]
+$stop
+$endif
+$var[s;1]
+$jsonParse[{"n":[
+  $getServerVar[item]\]}]
+
+$var[o;$repeatMessage[4;$repeatMessage[5;a]]]
+$eval[$replaceText[$var[o];a;
+%{DOL}%if[%{DOL}%or[%{DOL}%message==%{DOL}%json[n\;0\;item%{DOL}%var[s\]\]\;%{DOL}%message=="%{DOL}%json[n\;0\;item%{DOL}%var[s\]\]"\]==true\]
+%{DOL}%var[ñ\;%{DOL}%var[s\]\]
+%{DOL}%endif
+%{DOL}%var[s\;%{DOL}%sum[%{DOL}%var[s\]\;1\]\]
+;-1]]
+$var[item;$json[n;0;item$var[ñ]]]
+$if[$message==$var[item]]
+$author[$username]
+$authorIcon[$authorAvatar]
+$description[<:check:1104944814744682506> El artículo ha sido eliminado de la tienda.]
+$color[#66bb6a]
+$var[e;$var[ñ]]
+$var[e;$replaceText[$var[e];-;]]
+
+
+$var[value;$var[ñ]]
+$var[description;$var[ñ]]
+$var[requerido;$var[ñ]]
+$var[dar;$var[ñ]]
+$var[quitar;$var[ñ]]
+$var[balance;$var[ñ]]
+$var[stock;$var[ñ]]
+$var[reply;$var[ñ]]
+$var[role-collect;$var[ñ]]
+$var[count-collect;$var[ñ]]
+
+
+$c[item >.<]
+$jsonParse[$getServerVar[item]]
+$eval[$repeatMessage[$sum[1;$var[e]];
+%{DOL}%jsonSetString[item%{DOL}%var[ñ\]\;%{DOL}%json[item%{DOL}%sum[%{DOL}%var[ñ\]\;1\]\]\]
+%{DOL}%var[ñ\;%{DOL}%sum[%{DOL}%var[ñ\]\;1\]\]
+]]
+$setServerVar[item;$jsonStringify]
+
+
+$c[valor >.<]
+$jsonParse[$getServerVar[valor]]
+$eval[$repeatMessage[$sum[1;$var[e]];
+%{DOL}%jsonSetString[valor%{DOL}%var[value\]\;%{DOL}%json[valor%{DOL}%sum[%{DOL}%var[value\]\;1\]\]\]
+%{DOL}%var[value\;%{DOL}%sum[%{DOL}%var[value\]\;1\]\]
+]]
+$setServerVar[valor;$jsonStringify]
+
+$c[descripcion >.<]
+$jsonParse[$getServerVar[descripcion]]
+$eval[$repeatMessage[$sum[1;$var[e]];
+%{DOL}%jsonSetString[des%{DOL}%var[description\]\;%{DOL}%json[des%{DOL}%sum[%{DOL}%var[description\]\;1\]\]\]
+%{DOL}%var[description\;%{DOL}%sum[%{DOL}%var[description\]\;1\]\]
+]]
+$setServerVar[descripcion;$jsonStringify;$guildID]
+
+$c[requerido >.<]
+$jsonParse[$getServerVar[requerido]]
+$eval[$repeatMessage[$sum[1;$var[e]];
+%{DOL}%jsonSetString[reqrole%{DOL}%var[requerido\]\;%{DOL}%json[reqrole%{DOL}%sum[%{DOL}%var[requerido\]\;1\]\]\]
+%{DOL}%var[requerido\;%{DOL}%sum[%{DOL}%var[requerido\]\;1\]\]
+]]
+$setServerVar[requerido;$jsonStringify;$guildID]
+
+
+$c[dar >.<]
+$jsonParse[$getServerVar[dar]]
+$eval[$repeatMessage[$sum[1;$var[e]];
+%{DOL}%jsonSetString[give%{DOL}%var[dar\]\;%{DOL}%json[give%{DOL}%sum[%{DOL}%var[dar\]\;1\]\]\]
+%{DOL}%var[dar\;%{DOL}%sum[%{DOL}%var[dar\]\;1\]\]
+]]
+$setServerVar[dar;$jsonStringify;$guildID]
+
+
+$c[quitar >.<]
+$jsonParse[$getServerVar[quitar]]
+$eval[$repeatMessage[$sum[1;$var[e]];
+%{DOL}%jsonSetString[remover%{DOL}%var[quitar\]\;%{DOL}%json[remover%{DOL}%sum[%{DOL}%var[quitar\]\;1\]\]\]
+%{DOL}%var[quitar\;%{DOL}%sum[%{DOL}%var[quitar\]\;1\]\]
+]]
+$setServerVar[quitar;$jsonStringify;$guildID]
+
+
+$c[balance >.<]
+$jsonParse[$getServerVar[balance]]
+$eval[$repeatMessage[$sum[1;$var[e]];
+%{DOL}%jsonSetString[bal%{DOL}%var[balance\]\;%{DOL}%json[bal%{DOL}%sum[%{DOL}%var[balance\]\;1\]\]\]
+%{DOL}%var[balance\;%{DOL}%sum[%{DOL}%var[balance\]\;1\]\]
+]]
+$setServerVar[balance;$jsonStringify;$guildID]
+
+
+$c[stock >.<]
+$jsonParse[$getServerVar[stock]]
+$eval[$repeatMessage[$sum[1;$var[e]];
+%{DOL}%jsonSetString[sto%{DOL}%var[stock\]\;%{DOL}%json[sto%{DOL}%sum[%{DOL}%var[stock\]\;1\]\]\]
+%{DOL}%var[stock\;%{DOL}%sum[%{DOL}%var[stock\]\;1\]\]
+]]
+$setServerVar[stock;$jsonStringify;$guildID]
+
+
+$c[reply >.<]
+$jsonParse[$getServerVar[stock]]
+$eval[$repeatMessage[$sum[1;$var[e]];
+%{DOL}%jsonSetString[reply%{DOL}%var[reply\]\;%{DOL}%json[reply%{DOL}%sum[%{DOL}%var[reply\]\;1\]\]\]
+%{DOL}%var[reply\;%{DOL}%sum[%{DOL}%var[reply\]\;1\]\]
+]]
+$setServerVar[reply;$jsonStringify;$guildID]
+
+
+$var[¿?;false]
+$if[$var[¿?]==true]
+$c[role-collect >.<]
+$jsonParse[$getUserVar[role-collect]]
+$eval[$repeatMessage[$sum[1;$var[e]];
+%{DOL}%jsonSetString[col%{DOL}%var[role-collect\]\;%{DOL}%json[col%{DOL}%sum[%{DOL}%var[role-collect\]\;1\]\]\]
+%{DOL}%var[role-collect\;%{DOL}%sum[%{DOL}%var[role-collect\]\;1\]\]
+]]
+$setUserVar[role-collect;$jsonStringify;$authorID]
+
+
+$c[count-collect >.<]
+$jsonParse[$getUserVar[count-collect]]
+$eval[$repeatMessage[$sum[1;$var[e]];
+%{DOL}%jsonSetString[count%{DOL}%var[count-collect\]\;%{DOL}%json[count%{DOL}%sum[%{DOL}%var[count-collect\]\;1\]\]\]
+%{DOL}%var[count-collect\;%{DOL}%sum[%{DOL}%var[count-collect\]\;1\]\]
+]]
+$setUserVar[count-collect;$jsonStringify;$authorID]
+$endif
+$else
+$author[$username]
+$authorIcon[$authorAvatar]
+$description[<:xmark:1104944860043165736> Se proporcionó un argumento <item-name> no válido.]
+
+$addField[Uso:;
+`delete-item <item-name>`]
+$color[#ef5250]
+$stop
+$endif

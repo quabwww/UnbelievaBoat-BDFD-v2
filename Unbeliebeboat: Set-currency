@@ -1,0 +1,34 @@
+Prefix: !set-currency
+
+Codigo:
+$nomention
+$if[$charCount[$message]==0]
+$authorIcon[$authorAvatar]
+$author[$username]
+$description[El símbolo de moneda de este servidor es $getServerVar[currency]
+
+`Uso: set-currency <symbol>`]
+$color[#03a8f4]
+$stop
+$endif
+
+
+$async[bds]
+$addReactions[$message]
+$endasync
+$try
+$onlyIf[$trimSpace[$try $await[bds] $catchEtc$endtry]==;]
+$catch
+$author[$nickname]
+$authorIcon[$authorAvatar]
+$description[<:xmark:1104944860043165736>Se proporcionó un argumento ` <emoji>`  no válido.]
+$addField[Uso:;
+`set-currency <emoji valid>`]
+$color[#c13848]
+$stop
+$endtry
+$description[<:check:1104944814744682506> Se establecio el emoji de moneda en $message]
+$color[#66bb6a]
+$author[$nickname]
+$authorIcon[$authorAvatar]
+$setServerVar[currency;$message;$guildID]

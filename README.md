@@ -37,3 +37,5 @@ Crealas tal y cual cada valor de variable es unico y necesario al igual que el n
 | count-collect |   {}    |
 
 __Importante__: Debees tener dos variables para complementar este codigo que seria tu "dinero" "banco" en economia.
+
+## Avanzes del resultado

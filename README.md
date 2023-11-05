@@ -79,3 +79,10 @@ Puedes personalizar el mensaje de canjeo con edit-item en la opcion de `reply` d
 
 ![image](https://github.com/quabwww/UnbelievaBoat-BDFD/assets/148601206/ecb8987b-b361-4131-adad-87ce2e27268a)
 
+## Collect
+Mira todos los roles recolectados canjeados con el comando `use`. 
+__Importante__
+este codigo no esta terminado en si falta agrega esos porcentajes de dinero que no se que significan. Pero su funcion esta al 100%
+
+![image](https://github.com/quabwww/UnbelievaBoat-BDFD/assets/148601206/d8f18baf-6523-460f-be34-49a7718aba56)
+

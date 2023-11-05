@@ -99,6 +99,11 @@ Establece un emoji valido para la moneda local de tu servidor. ¿Que esperas?.
 
 ![image](https://github.com/quabwww/UnbelievaBoat-BDFD/assets/148601206/089486a3-2469-4b9e-ada1-5d472c699788)
 
+### Delete-item
+Elimina los item de la tienda, cabe recalcar que los item en si se borran (servidor) pero no los valores aparte de los usuarios.
+este se debe ya que la variable esta comprimida a `{}` funciones JSON y para restablecer un valor globalmente en local se usa `$resetUserVar` asi que si usamos eso estaria reseteando ya no un item de valor si no los 10.
+
+![image](https://github.com/quabwww/UnbelievaBoat-BDFD/assets/148601206/4ec0b4ce-9ada-4821-86e2-340ba7c618d6)
 
 ### Shop
 Mira toda la shop y sus articulos disponibles. Los item va rotando de manera ascendete quiere decir que se ira acomodando los items segun el orden de su valor.

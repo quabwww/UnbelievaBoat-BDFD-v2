@@ -41,6 +41,7 @@ $addField[Uso:;
 $author[$username]
 $authorIcon[$authorAvatar]
 $stop
+$stop
 $endtry
 $if[$or[$and[$message[1]==role-required;$or[$message[2]==$var[item];$message[2]=="$var[item]"]==true;$roleExists[$var[role]]==false]==true;$and[$or[$message[1]==value;$message[1]==price]==true;$or[$message[2]==$var[item];$message[2]=="$var[item]"]==true;$isNumber[$message[3]]==false]==true;$and[$message[1]==role-removed;$or[$message[2]==$var[item];$message[2]=="$var[item]"]==true;$roleExists[$var[role]]==false]==true;$and[$message[1]==required-balance;$or[$message[2]==$var[item];$message[2]=="$var[item]"]==true;$isNumber[$message[3]]==false]==true;$and[$message[1]==role-give;$or[$message[2]==$var[item];$message[2]=="$var[item]"]==true;$roleExists[$var[role]]==false]==true;$and[$message[1]==stock;$or[$message[2]==$var[item];$message[2]=="$var[item]"]==true;$isNumber[$message[3]]==false]==true]==true]
 
@@ -95,11 +96,11 @@ $endif
 
 $elseif[$message[1]==required-balance]
 $if[$or[$message[2]=="$var[item]";$message[2]==$var[item]]==true]
-
 $jsonParse[$getServerVar[balance]]
 $jsonSetString[bal$var[ñ];$message[3]]
-$setServerVar[balance;$jsonStringify]
+$setServerVar[balance;$jsonStringify;$guildID]
 $endif
+
 $elseif[$message[1]==stock]
 $if[$or[$message[2]=="$var[item]";$message[2]==$var[item]]==true]
 

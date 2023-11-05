@@ -2,6 +2,7 @@ Prefix: !shop
 
 Codigo: 
 
+
 $nomention
 $jsonParse[$getServerVar[item]]
 $if[$json[item1]==]

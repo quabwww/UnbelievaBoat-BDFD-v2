@@ -44,7 +44,7 @@ Crea los nombre de los items pero no mayor a 30 caracteress esto esta balanceado
 
 ![image](https://github.com/quabwww/UnbelievaBoat-BDFD/assets/148601206/3266ff80-de49-4d03-9485-e98dbe47ffbb)
 
-### Edit-item__
+### Edit-item
 Edita el item ya creado puedes usar el nombre del item dentro de doble comillas.
 Ejemplo: `"item_name"`
 

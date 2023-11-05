@@ -20,10 +20,8 @@ Link: https://discord.gg/dru9uRYKqq
 
 Crealas tal y cual cada valor de variable es unico y necesario al igual que el nombre.
 
-__Importante__: Debees tener dos variables para complementar este codigo que seria tu "dinero" y "banco" en economia.
-
-|    Nombre     |  Valor  |
-| --------------| ------- |
+|    Nombre     |  Valor  | __Importante__: Debees tener dos variables para complementar este codigo que seria 
+| --------------| ------- | tu "dinero" "banco" en economia.
 | item          |   {}    |
 | descripcion   |   {}    |
 | requerido     |   {}    |

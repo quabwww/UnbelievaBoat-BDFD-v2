@@ -90,6 +90,8 @@ este codigo no esta terminado en si falta agrega esos porcentajes de dinero que 
 ![image](https://github.com/quabwww/UnbelievaBoat-BDFD/assets/148601206/d8f18baf-6523-460f-be34-49a7718aba56)
 
 ## Item-info
+Obten toda la informacion de un item. puedes editar su reconpensa con `edit-item`.
+![image](https://github.com/quabwww/UnbelievaBoat-BDFD/assets/148601206/5b87e80c-fda9-4139-bc43-ea6aa4f13c01)
 
 ## Set-currency
 Establece un emoji valido para la moneda local de tu servidor. ¿Que esperas?.

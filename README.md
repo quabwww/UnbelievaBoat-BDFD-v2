@@ -91,6 +91,7 @@ este codigo no esta terminado en si falta agrega esos porcentajes de dinero que 
 
 ## Item-info
 Obten toda la informacion de un item. puedes editar su reconpensa con `edit-item`.
+
 ![image](https://github.com/quabwww/UnbelievaBoat-BDFD/assets/148601206/5b87e80c-fda9-4139-bc43-ea6aa4f13c01)
 
 ## Set-currency

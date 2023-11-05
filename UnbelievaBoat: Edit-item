@@ -1,0 +1,220 @@
+Prefix: !edit-item
+
+Codigo:
+$nomention
+$allowRoleMentions[]
+$var[cu;$getServerVar[currency;$guildID]]
+$var[s;1]
+$jsonParse[{"n":[
+  $getServerVar[item]\]}]
+
+$var[o;$repeatMessage[4;$repeatMessage[5;a]]]
+$eval[$replaceText[$var[o];a;
+%{DOL}%if[%{DOL}%or[%{DOL}%message[2\]==%{DOL}%json[n\;0\;item%{DOL}%var[s\]\]\;%{DOL}%message[2\]=="%{DOL}%json[n\;0\;item%{DOL}%var[s\]\]"\]==true\]
+%{DOL}%var[ñ\;%{DOL}%var[s\]\]
+%{DOL}%endif
+%{DOL}%var[s\;%{DOL}%sum[%{DOL}%var[s\]\;1\]\]
+;-1]]
+
+$var[item;$json[n;0;item$var[ñ]]]
+$var[text;$trimSpace[$replaceText[$replaceText[$message;$message[1];;1];$message[2];;1]]]
+$var[convert;$replaceText[$var[text]; ;_;-1]]
+$var[role;$findRole[$message[3]]]
+$if[$message[2]==$var[item]]
+$else
+$color[#c13849]
+$description[<:xmark:1104944860043165736> Se han dado muy pocos argumentos.]
+$addField[Uso:;
+`edit-item <optión> <item-name> [nuevo valor\]`;false;1]
+$author[$username]
+$authorIcon[$authorAvatar]
+$stop
+$endif
+
+$try
+$onlyIf[$or[$message[1]!=;$checkContains[$message[1];name;price;value;description;stock;role-required;role-give;role-removed;required-balance;reply]==true]==true;]
+$catch
+$color[#c13849]
+$description[<:xmark:1104944860043165736> Se han dado muy pocos argumentos.]
+$addField[Uso:;
+`edit-item <optión> <item-name> [nuevo valor\]`;false;1]
+$author[$username]
+$authorIcon[$authorAvatar]
+$stop
+$endtry
+$if[$or[$and[$message[1]==role-required;$or[$message[2]==$var[item];$message[2]=="$var[item]"]==true;$roleExists[$var[role]]==false]==true;$and[$or[$message[1]==value;$message[1]==price]==true;$or[$message[2]==$var[item];$message[2]=="$var[item]"]==true;$isNumber[$message[3]]==false]==true;$and[$message[1]==role-removed;$or[$message[2]==$var[item];$message[2]=="$var[item]"]==true;$roleExists[$var[role]]==false]==true;$and[$message[1]==required-balance;$or[$message[2]==$var[item];$message[2]=="$var[item]"]==true;$isNumber[$message[3]]==false]==true;$and[$message[1]==role-give;$or[$message[2]==$var[item];$message[2]=="$var[item]"]==true;$roleExists[$var[role]]==false]==true;$and[$message[1]==stock;$or[$message[2]==$var[item];$message[2]=="$var[item]"]==true;$isNumber[$message[3]]==false]==true]==true]
+
+$color[#c13849]
+$description[<:xmark:1104944860043165736>  Se proporcionó un argumento `<option>` no válido.]
+$addField[Uso:;
+`edit-item <option> <item-name> [nuevo valor\]`]
+$author[$username]
+$authorIcon[$authorAvatar]
+$color[#c13849]
+$stop
+$elseif[$and[$charCount[$var[convert]]>=30;$message[1]==name]==true]
+$description[<:xmark:1104944860043165736>: La longitud máxima para el nombre de un elemento es 30 caracteres.]
+$author[$username]
+$authorIcon[$authorAvatar]
+$color[#c13849]
+$stop
+$elseif[$and[$charCount[$var[text]]>=60;$message[1]==description]==true]
+$description[<:xmark:1104944860043165736>: La longitud máxima para el description de un item es 60 caracteres.]
+$author[$username]
+$authorIcon[$authorAvatar]
+$color[#c13849]
+$endif
+
+
+
+$if[$or[$message[1]==value;$message[1]==price]==true]
+$if[$or[$message[2]=="$var[item]";$message[2]==$var[item]]==true]
+
+$jsonParse[$getServerVar[valor;$guildID]]
+$jsonSetString[valor$var[ñ];$message[3]]
+$setServerVar[valor;$jsonStringify;$guildID]
+$endif
+
+$elseif[$message[1]==description]
+$if[$or[$message[2]=="$var[item]";$message[2]==$var[item]]==true]
+
+$jsonParse[$getServerVar[descripcion]]
+$jsonSetString[des$var[ñ];$var[text]]
+$setServerVar[descripcion;$jsonStringify;$guildID]
+$endif
+
+$elseif[$message[1]==required-balance]
+$if[$or[$message[2]=="$var[item]";$message[2]==$var[item]]==true]
+
+$jsonParse[$getServerVar[balance]]
+$jsonSetString[bal$var[ñ];$message[3]]
+$setServerVar[balance;$jsonStringify]
+$endif
+$elseif[$message[1]==stock]
+$if[$or[$message[2]=="$var[item]";$message[2]==$var[item]]==true]
+
+$jsonParse[$getServerVar[stock]]
+$jsonSetString[sto$var[ñ];$message[3]]
+$setServerVar[stock;$jsonStringify;$guildID]
+$endif
+
+$elseif[$message[1]==role-required]
+$if[$or[$message[2]=="$var[item]";$message[2]==$var[item]]==true]
+
+$jsonParse[$getServerVar[requerido]]
+$jsonSetString[reqrole$var[ñ];$var[role]]
+$setServerVar[requerido;$jsonStringify;$guildID]
+$endif
+
+$elseif[$message[1]==role-removed]
+$if[$or[$message[2]=="$var[item]";$message[2]==$var[item]]==true]
+$jsonParse[$getServerVar[quitar]]
+$jsonSetString[remover$var[ñ];$var[role]]
+$setServerVar[quitar;$jsonStringify;$guildID]
+$endif
+
+$elseif[$message[1]==role-give]
+$if[$or[$message[2]=="$var[item]";$message[2]==$var[item]]==true]
+$jsonParse[$getServerVar[dar]]
+
+$jsonSetString[give$var[ñ];$var[role]]
+$setServerVar[dar;$jsonStringify;$guildID]
+$endif
+
+$elseif[$message[1]==reply]
+$if[$or[$message[2]=="$var[item]";$message[2]==$var[item]]==true]
+$jsonParse[$getServerVar[reply]]
+
+$jsonSetString[reply$var[ñ];$var[text]]
+$setServerVar[reply;$jsonStringify;$guildID]
+$endif
+
+$elseif[$message[1]==stock]
+$if[$or[$message[2]=="$var[item]";$message[2]==$var[item]]==true]
+$jsonParse[$getServerVar[stock]]
+
+$jsonSetString[sto$var[ñ];$message[3]]
+$setServerVar[stock;$jsonStringify;$guildID]
+$endif
+
+$elseif[$message[1]==name]
+$if[$or[$message[2]=="$var[item]";$message[2]==$var[item]]==true]
+
+$jsonParse[$getServerVar[item]]
+$jsonSetString[item$var[ñ];$var[convert]]
+$setServerVar[item;$jsonStringify;$guildID]
+$endif
+$endif
+
+$jsonParse[{"n":[
+  $getServerVar[item],
+  $getServerVar[descripcion],
+  $getServerVar[valor],
+  $getServerVar[balance],
+  $getServerVar[stock],
+  $getServerVar[requerido],
+  $getServerVar[dar],
+  $getServerVar[quitar],
+  $getServerVar[reply],
+  $getUserVar[valor]\]}]
+
+
+$if[$json[n;2;valor$var[ñ]]==]
+$var[gg;0]
+$else
+$var[gg;$numberSeparator[$json[n;2;valor$var[ñ]]]]
+$endif
+$if[$json[n;3;bal$var[ñ]]==]
+$var[gf;Ninguno]
+$else
+$var[gf;$var[cu]$json[n;3;bal$var[ñ]]]
+$endif
+$if[$json[n;9;valor$var[ñ]]==]
+$var[inv;No]
+$else
+$var[inv;Si]
+$endif
+$if[$json[n;4;sto$var[ñ]]==]
+$var[st;Ninguno]
+$else
+$var[st;$var[cu]$numberSeparator[$json[n;4;sto$var[ñ]]]]
+$endif
+
+$authorIcon[$authorAvatar]
+$author[$username]
+<:check:1104944814744682506> Item update!
+$title[Item info]
+$addField[Nombre;
+$replaceText[$json[n;0;item$var[ñ]];_; ;-1];true;1]
+
+$addField[Precio;
+$var[cu]$var[gg];true;1]
+
+
+$addField[Descripcion;
+$replaceText[$replaceText[$checkCondition[$json[n;1;des$var[ñ]]!=];true;$json[n;1;des$var[ñ]];1];false;Ninguno;1];false;1]
+
+$addField[Esta en tu inventario?;
+$var[inv];true;1]
+
+
+$addField[Stock limite;
+$var[st];true;1]
+
+$addField[Balance requerido;
+$var[gf];true;1]
+
+$addField[Rol requerido;
+$replaceText[$replaceText[$checkCondition[$json[n;5;reqrole$var[ñ]]!=];true;<@&$json[n;5;reqrole$var[ñ]]>;1];false;Ninguno;1];true;1]
+
+$addField[Rol a dar;
+$replaceText[$replaceText[$checkCondition[$json[n;6;give$var[ñ]]!=];true;<@&$json[n;6;give$var[ñ]]>;1];false;Ninguno;1];true;1]
+
+$addField[Rol a quitar;
+$replaceText[$replaceText[$checkCondition[$json[n;7;remover$var[ñ]]!=];true;<@&$json[n;7;remover$var[ñ]]>;1];false;Ninguno;1];true;1]
+
+$var[rep;$json[n;8;reply$var[ñ]]]
+$var[rep2;$replaceText[$replaceText[$replaceText[$replaceText[$replaceText[$replaceText[$replaceText[$var[rep];{member.id};$authorID];{member.username};$username];{member.tag};$username#$discriminator[$authorID]];{member.mention};<@$authorID>];{server.id};$guildID];{server.name};$serverName[$guildID]];{server.members};$membersCount]]
+$addField[Mensaje de respuesta;
+$replaceText[$replaceText[$checkCondition[$var[rep]!=];true;$var[rep2];1];false;Ninguno;1];true;1]
+$color[#03a8f4]

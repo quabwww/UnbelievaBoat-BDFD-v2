@@ -27,7 +27,7 @@ Crealas tal y como esta, cada valor de variable es unico y necesario al igual qu
 | dar           |   {}    |
 | quitar        |   {}    |
 | balance       |   {}    |
-| contador      |   {}    |
+| contador      |    1    |
 | valor         |   {}    |
 | stock         |   {}    |
 | reply         |   {}    |

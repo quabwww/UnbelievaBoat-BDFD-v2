@@ -49,7 +49,7 @@ Edita el item ya creado puedes usar el nombre del item dentro de doble comillas.
 Ejemplo: "item_name"
 
 Opciones disponibles:
-name, price, value, description,stock, role-required , role-give, role-removed, required-balance, reply
+- name, price, value, description,stock, role-required , role-give, role-removed, required-balance, reply
 
 ![image](https://github.com/quabwww/UnbelievaBoat-BDFD/assets/148601206/508f0024-de62-4c20-b56c-1f7ec713a7f9)
 

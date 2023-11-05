@@ -1,1 +1,57 @@
-k
+Prefix: !shop
+
+Codigo: 
+
+$nomention
+$jsonParse[$getServerVar[item]]
+$if[$json[item1]==]
+$author[$serverName[$guildID] Tienda]
+$authorIcon[$serverIcon[$guildID]]
+$color[#03a8f4]
+$description[La tienda está vacía. Probablemente alguien lo robó :shrug:
+Agregue items a la tienda usando el comando create-item.]
+$stop
+$color[]
+$endif
+
+$var[cu;$getServerVar[currency;$guildID]]
+$botTyping
+$var[s;1]
+$var[n;0]
+$jsonParse[{"tod":
+   [$getServerVar[item],
+   $getServerVar[valor],
+   $getServerVar[descripcion]\]}]
+
+$eval[$repeatMessage[10;$repeatMessage[2;
+%{DOL}%if[%{DOL}%json[tod\;0\;item%{DOL}%var[n\]\]!=\]
+%{DOL}%var[total\;1+%{DOL}%var[total\]\]
+%{DOL}%endif
+%{DOL}%var[n\;%{DOL}%sum[%{DOL}%var[n\]\;1\]\]]]]
+$var[mk;$cropText[$repeatMessage[6;$repeatMessage[2;a]];$calculate[$var[total]0];]]
+
+
+$eval[$replaceText[$var[mk];a;
+%{DOL}%var[array\;%{DOL}%json[tod\;1\;valor%{DOL}%var[s\]\]-%{DOL}%json[tod\;0\;item%{DOL}%var[s\]\]-%{DOL}%trimSpace[%{DOL}%replaceText[%{DOL}%json[tod\;2\;des%{DOL}%var[s\]\]\; \;_\]\] %{DOL}%var[array\]\]
+
+%{DOL}%var[s\;%{DOL}%sum[%{DOL}%var[s\]\;1\]\]
+;-1]]
+$textSplit[$var[array]; ]
+$jsonParse[{"n":["$joinSplitText[", "]"\]}]
+$jsonArraySort[n]
+$var[o;0]
+
+
+$eval[$replaceText[$var[mk];a;
+%{DOL}%textSplit[%{DOL}%json[n\;%{DOL}%var[o\]\]\;-\]
+%{DOL}%addField[%{DOL}%var[cu\]%{DOL}%numberSeparator[%{DOL}%splitText[1\]\] - %{DOL}%splitText[2\]\;
+%{DOL}%replaceText[%{DOL}%splitText[3\]\;_\; \]
+ㅤ\;false\;1\]
+
+%{DOL}%var[o\;%{DOL}%sum[%{DOL}%var[o\]\;1\]\]
+;-1]]
+$color[03a8f4]
+$description[Compre un artículo con la opción `buy-item <name> [cantidad\]` comando. 
+Para obtener más información sobre un artículo, utilice `item-info <name> `comando.]
+$author[$serverName[$guildID] Tienda]
+$authorIcon[$serverIcon[$guildID]]

@@ -96,7 +96,7 @@ Establece un emoji valido para la moneda local de tu servidor. ¿Que esperas?.
 
 
 ## Shop
-Mira toda la shop y sus articulos disponibles.
+Mira toda la shop y sus articulos disponibles. Los item va rotando de manera ascendete quiere decir que se ira acomodando los items segun el orden de su valor.
 
 ![image](https://github.com/quabwww/UnbelievaBoat-BDFD/assets/148601206/cc591118-b928-4a48-8632-65ea8d7756ef)
 

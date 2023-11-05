@@ -39,7 +39,7 @@ __Importante__: Debes tener dos variables para complementar este codigo que seri
 
 ## Avanzes del resultado
 
-### Crear-item
+### [Crear-item](http:discord.com)
 Crea los nombre de los items pero no mayor a 30 caracteress esto esta balanceado para usuarios premium y no premium sobre el limite de caracteres en las variables, __tambien que cada espacio que use sera remplazado por "_"__. tenga en cuenta esto.
 
 ![image](https://github.com/quabwww/UnbelievaBoat-BDFD/assets/148601206/3266ff80-de49-4d03-9485-e98dbe47ffbb)

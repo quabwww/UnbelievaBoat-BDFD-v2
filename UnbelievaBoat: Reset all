@@ -1,0 +1,23 @@
+Prefix: !reset
+
+Posdata: se vreara un code aparte para eliminar cosas especidificas ok
+
+Codigo
+$nomention
+ok
+$resetServerVar[item]
+$resetServerVar[valor]
+$resetUserVar[item]
+$resetUserVar[valor]
+$resetServerVar[descripcion]
+$resetServerVar[requerido]
+$resetServerVar[dar]
+$resetServerVar[quitar]
+$resetServerVar[balance]
+$resetServerVar[contador]
+$resetServerVar[reply]
+$resetServerVar[stock]
+$resetUserVar[dar]
+
+$resetUserVar[count-collect]
+$resetUserVar[role-collect]

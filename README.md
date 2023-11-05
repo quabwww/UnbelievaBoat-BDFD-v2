@@ -48,10 +48,11 @@ Crea los nombre de los items pero no mayor a 30 caracteress esto esta balanceado
 Edita el item ya creado puedes usar el nombre del item dentro de doble comillas.
 Ejemplo: `"item_name"`
 
-Opciones disponibles:
+__Opciones disponibles:__
 - name, price, value, description,stock, role-required , role-give, role-removed, required-balance, reply
 
->> hi
+__Reply - Tags:__
+- {member.id}, {member.username}, {member.tag}, {member.mention}, {server.id}, {server.name}, {servers.members}.
 
 ![image](https://github.com/quabwww/UnbelievaBoat-BDFD/assets/148601206/508f0024-de62-4c20-b56c-1f7ec713a7f9) ![image](https://github.com/quabwww/UnbelievaBoat-BDFD/assets/148601206/b74b2db6-4d83-407e-8c39-9099b8a51af7)
 

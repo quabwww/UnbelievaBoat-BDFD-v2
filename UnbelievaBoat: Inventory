@@ -1,0 +1,57 @@
+Prefix: !inventory optional<user>
+
+Codigo:
+
+$nomention
+$var[us;$findUser[$message;true]]
+$var[w;1]
+$var[n;1]
+$var[op;0]
+$var[f;0]
+$jsonParse[{"m":
+   [$getUserVar[valor;$var[us]],
+   $getUserVar[item;$var[us]]\]}]
+
+$eval[$repeatMessage[2;$repeatMessage[10;
+%{DOL}%if[%{DOL}%json[m\;1\;item%{DOL}%var[f\]\]!=\]
+%{DOL}%var[total\;1+%{DOL}%var[total\]\]
+%{DOL}%endif
+%{DOL}%var[f\;%{DOL}%sum[%{DOL}%var[f\]\;1\]\]]]]
+$if[$calculate[$trimSpace[$var[total]0]]==0]
+$description[¡Nada que ver aqui!]
+$author[$username[$var[us]] Inventario]
+$authorIcon[$userAvatar[$var[us]]]
+$color[#03a8f4]
+$stop
+$endif
+
+$eval[$repeatMessage[10;
+%{DOL}%var[val\;%{DOL}%if[%{DOL}%json[m\;0\;valor%{DOL}%var[w\]\]!=\]%{DOL}%json[m\;0\;valor%{DOL}%var[w\]\]%{DOL}%endif\]
+%{DOL}%if[%{DOL}%json[m\;1\;item%{DOL}%var[w\]\]!=\]%{DOL}%var[itm\;%{DOL}%var[val\]-%{DOL}%json[m\;1\;item%{DOL}%var[w\]\] %{DOL}%var[itm\]\]%{DOL}%endif
+%{DOL}%var[w\;%{DOL}%sum[%{DOL}%var[w\]\;1\]\]
+]]
+
+$var[o;0]
+$textSplit[$var[itm]; ]
+$var[me;$trimSpace["$joinSplitText[", "]"]]
+$jsonParse[{"h": [$var[me]\]}]
+$jsonParse[$jsonStringify]
+$jsonArraySort[h]
+$var[sam<3;12]
+
+$var[etc;$cropText[$repeatMessage[5;$repeatMessage[5;a]];$var[sam<3];]]
+$eval[$replaceText[$var[etc];a;
+%{DOL}%if[%{DOL}%json[h\;%{DOL}%var[o\]\]!=\]
+%{DOL}%textSplit[%{DOL}%json[h\;%{DOL}%var[o\]\]\;-\]
+%{DOL}%var[t2\;%{DOL}%replaceText[%{DOL}%splitText[2\]\;_\; \]\]
+%{DOL}%addField[%{DOL}%numberSeparator[%{DOL}%splitText[1\]\] - %{DOL}%var[t2\]\;
+ㅤ
+\;false\;1\]
+%{DOL}%endif
+%{DOL}%var[o\;%{DOL}%sum[%{DOL}%var[o\]\;1\]\]
+;-1]]
+$description[Utilice un item con el comando `use <item> [cantidad\]`.]
+$author[$username[$var[us]] Inventario]
+$authorIcon[$userAvatar[$var[us]]]
+$color[#03a8f4]
+$endif

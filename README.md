@@ -89,3 +89,14 @@ este codigo no esta terminado en si falta agrega esos porcentajes de dinero que 
 
 ![image](https://github.com/quabwww/UnbelievaBoat-BDFD/assets/148601206/d8f18baf-6523-460f-be34-49a7718aba56)
 
+## Se-currency
+Establece un emoji valido para la moneda local de tu servidor. ¿Que esperas?.
+
+![image](https://github.com/quabwww/UnbelievaBoat-BDFD/assets/148601206/089486a3-2469-4b9e-ada1-5d472c699788)
+
+
+## Shop
+Mira toda la shop y sus articulos disponibles.
+
+![image](https://github.com/quabwww/UnbelievaBoat-BDFD/assets/148601206/cc591118-b928-4a48-8632-65ea8d7756ef)
+

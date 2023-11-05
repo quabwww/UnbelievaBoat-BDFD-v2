@@ -43,3 +43,11 @@ __Crear-item__
 Crea los nombre de los items pero no mayor a 30 caracteress esto esta balanceado para usuarios premium y no premium sobre el limite de caracteres en las variables, __tambien que cada espacio que use sera remplazado por "_"__. tenga en cuenta esto.
 
 ![image](https://github.com/quabwww/UnbelievaBoat-BDFD/assets/148601206/3266ff80-de49-4d03-9485-e98dbe47ffbb)
+
+__Edit-item__
+Edita el item ya creado puedes usar el nombre del item dentro de doble comillas.
+Ejemplo: "item_name"
+
+Opciones disponibles:
+![image](https://github.com/quabwww/UnbelievaBoat-BDFD/assets/148601206/508f0024-de62-4c20-b56c-1f7ec713a7f9)
+

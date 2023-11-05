@@ -71,3 +71,11 @@ Mira todo tu inventario disponible, tambien puedes ver el de un usuario.
 
 ![image](https://github.com/quabwww/UnbelievaBoat-BDFD/assets/148601206/b1f489cb-e7f8-40d7-af73-bef7995d98b1)
 
+## Use
+
+Usa los items y reclama a la vez la reconpensar que trae este item!!. tienes la opcion de cuantos usos darle y restarte.
+__Nota__
+Puedes personalizar el mensaje de canjeo con edit-item en la opcion de `reply` de dicho item
+
+![image](https://github.com/quabwww/UnbelievaBoat-BDFD/assets/148601206/ecb8987b-b361-4131-adad-87ce2e27268a)
+

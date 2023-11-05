@@ -64,3 +64,10 @@ Debes remplazar los var por las dos variables de "dinero" y "banco" que manejes.
 de los __contrario__ el buy-item no funcionara y seguramente no hara las restas correspondientes en el dinero y balance requeridos.
 
 ![image](https://github.com/quabwww/UnbelievaBoat-BDFD/assets/148601206/24f2ada0-737b-401b-ba60-f0484ea3057b)
+
+## Inventory
+
+Mira todo tu inventario disponible, tambien puedes ver el de un usuario.
+
+![image](https://github.com/quabwww/UnbelievaBoat-BDFD/assets/148601206/b1f489cb-e7f8-40d7-af73-bef7995d98b1)
+

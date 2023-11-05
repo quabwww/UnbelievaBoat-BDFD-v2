@@ -1,0 +1,106 @@
+Prefix: !item-info <item-name>
+
+Codigo:
+
+$nomention
+$allowRoleMentions[]
+$if[$argCount[$message]==0]
+$authorIcon[$authorAvatar]
+$author[$username]
+$description[<:xmark:1104944860043165736> Se han dado muy pocos argumentos.]
+$addField[Uso:;
+`item-info <item-name>`]
+$color[#c13849]
+$stop
+$endif
+$var[n;0]
+$var[cu;$getServerVar[currency;$guildID]]
+$jsonParse[{"n":[
+  $getServerVar[item],
+  $getServerVar[descripcion],
+  $getServerVar[valor],
+  $getServerVar[balance],
+  $getServerVar[stock],
+  $getServerVar[requerido],
+  $getServerVar[dar],
+  $getServerVar[quitar],
+  $getServerVar[reply],
+  $getUserVar[valor]\]}]
+$var[o;$repeatMessage[4;$repeatMessage[5;a]]]
+$eval[$replaceText[$var[o];a;
+%{DOL}%var[n\;%{DOL}%sum[%{DOL}%var[n\]\;1\]\]
+%{DOL}%if[%{DOL}%message[1\]==%{DOL}%json[n\;0\;item%{DOL}%var[n\]\]\]
+%{DOL}%var[ñ\;%{DOL}%var[n\]\]
+%{DOL}%endif;-1]]
+
+$if[$json[n;2;valor$var[ñ]]==]
+$var[gg;0]
+$else
+$var[gg;$numberSeparator[$json[n;2;valor$var[ñ]]]]
+$endif
+$if[$json[n;3;bal$var[ñ]]==]
+$var[gf;Ninguno]
+$else
+$var[gf;$var[cu]$numberSeparator[$json[n;3;bal$var[ñ]]]
+]
+$endif
+$if[$json[n;9;valor$var[ñ]]==]
+$var[inv;No]
+$else
+$var[inv;Si]
+$endif
+$if[$json[n;4;sto$var[ñ]]==]
+$var[st;Ninguno]
+$else
+$var[st;$var[cu]$numberSeparator[$json[n;4;sto$var[ñ]]]
+]
+$endif
+
+$if[$message==$json[n;0;item$var[ñ]]]
+$authorIcon[$authorAvatar]
+$author[$username]
+$title[Item info]
+$addField[Nombre;
+$replaceText[$json[n;0;item$var[ñ]];_; ];true;1]
+
+$addField[Precio;
+$var[cu]$var[gg];true;1]
+
+
+$addField[Descripcion;
+$replaceText[$replaceText[$checkCondition[$json[n;1;des$var[ñ]]!=];true;$json[n;1;des$var[ñ]];1];false;Ninguno;1];false;1]
+
+$addField[Esta en tu inventario?;
+$var[inv];true;1]
+
+
+$addField[Stock limite;
+$var[st];true;1]
+
+$addField[Balance requerido;
+$var[gf];true;1]
+
+$addField[Rol requerido;
+$replaceText[$replaceText[$checkCondition[$json[n;5;reqrole$var[ñ]]!=];true;<@&$json[n;5;reqrole$var[ñ]]>;1];false;Ninguno;1];true;1]
+
+$addField[Rol a dar;
+$replaceText[$replaceText[$checkCondition[$json[n;6;give$var[ñ]]!=];true;<@&$json[n;6;give$var[ñ]]>;1];false;Ninguno;1];true;1]
+
+$addField[Rol a quitar;
+$replaceText[$replaceText[$checkCondition[$json[n;7;remover$var[ñ]]!=];true;<@&$json[n;7;remover$var[ñ]]>;1];false;Ninguno;1];true;1]
+
+$var[rep;$json[n;8;reply$var[ñ]]]
+$var[rep2;$replaceText[$replaceText[$replaceText[$replaceText[$replaceText[$replaceText[$replaceText[$var[rep];{member.id};$authorID];{member.username};$username];{member.tag};$username#$discriminator[$authorID]];{member.mention};<@$authorID>];{server.id};$guildID];{server.name};$serverName[$guildID]];{server.members};$membersCount]]
+$addField[Mensaje de respuesta;
+$replaceText[$replaceText[$checkCondition[$var[rep]!=];true;$var[rep2];1];false;Ninguno;1];true;1]
+$else
+$authorIcon[$authorAvatar]
+$author[$username]
+$description[
+<:xmark:1104944860043165736> Se proporcionó un argumento `<item name>` no válido.]
+$addField[Uso:;
+`item-info <item name>`]
+$color[#c13849]
+$stop
+$endif
+$color[#03a8f4]

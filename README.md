@@ -18,6 +18,10 @@ Link: https://discord.gg/dru9uRYKqq
 
 ### Variables Necesarias.
 
+Crealas tal y cual cada valor de variable es unico y necesario al igual que el nombre.
+
+__Importante__: Debees tener dos variables para complementar este codigo que seria tu "dinero" y "banco" en economia.
+
 |    Nombre     |  Valor  |
 | --------------| ------- |
 | item          |   {}    |

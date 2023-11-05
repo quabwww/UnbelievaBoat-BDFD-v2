@@ -2,7 +2,7 @@
 
 ¡Hola! soy el creador de estos codigos xquab pertenesco al equipo de [The BDS Word](https://discord.gg/dru9uRYKqq). Sigue las indicaciones para poder usar el codigo ten en cuenta que si no sabes como funciona el codigo no desordenes nada o lo romperas.
 
-Posdata: Si quieres codigos y guias unete alservidor **servidor**. Tambien podras estar al tanto de novedades de proyectos mas adelante.
+Posdata: Si quieres codigos y guias unete al servidor **servidor**. Tambien podras estar al tanto de novedades de proyectos mas adelante.
 Link: https://discord.gg/dru9uRYKqq
 
 ### Algunos canales con los que contamos.
@@ -17,7 +17,7 @@ Link: https://discord.gg/dru9uRYKqq
 
 ### Variables Necesarias.
 
-Crealas tal y cual cada valor de variable es unico y necesario al igual que el nombre.
+Crealas tal y como esta, cada valor de variable es unico y necesario al igual que el nombre.
 
 |    Nombre     |  Valor  | 
 | --------------| ------- | 
@@ -35,7 +35,7 @@ Crealas tal y cual cada valor de variable es unico y necesario al igual que el n
 | role-collect  |   {}    |
 | count-collect |   {}    |
 
-__Importante__: Debees tener dos variables para complementar este codigo que seria tu "dinero" "banco" en economia.
+__Importante__: Debes tener dos variables para complementar este codigo que seria tu "dinero" "banco" en economia.
 
 ## Avanzes del resultado
 
@@ -73,9 +73,9 @@ Mira todo tu inventario disponible, tambien puedes ver el de un usuario.
 
 ## Use
 
-Usa los items y reclama a la vez la reconpensar que trae este item!!. tienes la opcion de cuantos usos darle y restarte.
+Usa los items y reclama a la vez la reconpensas que trae este item!!. tienes la opcion de cuantos usos darle y restarte.
 __Nota__
-Puedes personalizar el mensaje de canjeo con edit-item en la opcion de `reply` de dicho item
+Puedes personalizar el mensaje de canjeo con edit-item en la opcion de `reply` de dicho item.
 
 ![image](https://github.com/quabwww/UnbelievaBoat-BDFD/assets/148601206/ecb8987b-b361-4131-adad-87ce2e27268a)
 

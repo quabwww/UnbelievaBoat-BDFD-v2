@@ -114,7 +114,7 @@ Mira toda la shop y sus articulos disponibles. Los item va rotando de manera asc
 
 No deceas copiar codigo por codigo?. No hay problema puedes crear un bot en Bot Desinger For Discord y agregar este codigo compartido con todo los codigos ya introducidos
 
-**Nota:** Perdon si ves codigos inncesarios se havian usarado para testear comandos.
+**Nota:** Perdon si ves codigos inncesarios se havian usado para testear comandos.
 
 Share Code: RJUbzD37ANKp3fyUiZ3JeoQaW
 **Tutorial:**

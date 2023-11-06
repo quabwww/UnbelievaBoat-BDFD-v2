@@ -110,7 +110,6 @@ Mira toda la shop y sus articulos disponibles. Los item va rotando de manera asc
 
 ![image](https://github.com/quabwww/UnbelievaBoat-BDFD/assets/148601206/cc591118-b928-4a48-8632-65ea8d7756ef)
 
-
 ## Otros
 
 No deceas copiar codigo por codigo?. No hay problema puedes crear un bot en Bot Desinger For Discord y agregar este codigo compartido con todo los codigos ya introducidos

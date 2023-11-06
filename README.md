@@ -114,8 +114,12 @@ Mira toda la shop y sus articulos disponibles. Los item va rotando de manera asc
 
 No deceas copiar codigo por codigo?. No hay problema puedes crear un bot en Bot Desinger For Discord y agregar este codigo compartido con todo los codigos ya introducidos
 
-Nota: Perdon si ves codigos inncesarios se usaran para testear comandos.
+**Nota:** Perdon si ves codigos inncesarios se havian usarado para testear comandos.
 
 Share Code: RJUbzD37ANKp3fyUiZ3JeoQaW
+__Tutorial:__
 
-![image](https://github.com/quabwww/UnbelievaBoat-BDFD/assets/148601206/7239f3e8-a016-47bc-9fb9-2dad10d78ee3)
+![image](https://github.com/quabwww/UnbelievaBoat-BDFD/assets/148601206/d43e2b47-1812-4745-b64b-9879aed8144b) ![image](https://github.com/quabwww/UnbelievaBoat-BDFD/assets/148601206/0ce885b0-d99a-4c8e-8749-bd66a77bdeea)
+
+
+

@@ -3,11 +3,8 @@ Prefix: !buy-item <name>
 Codigo:
 
 $nomention
-$c[rempla@ar aqui]
 $var[variable;dinero]
 $var[variable2;banco]
-$c[remplazar aqui]
-
 $var[cu;$getServerVar[currency]]
 
 $var[s;0]
@@ -93,7 +90,7 @@ $var[hh;$json[valor$var[ñ]]]
 $endif
 
 $try
-$description[<:check:1104944814744682506>  ¡Has comprado $var[&] plátano por $var[cu]$multi[$var[v];$var[&]]! Esto ahora está en su inventario.
+$description[<:check:1104944814744682506>  ¡Has comprado $var[&] $var[item] por $var[cu]$multi[$var[v];$var[&]]! Esto ahora está en su inventario.
 Utilice este elemento con el comando `use`.]
 $color[#66bb6a]
 $author[$username]
@@ -130,4 +127,6 @@ $description[<:xmark:1104944860043165736> No pude encontrar ningún item en la t
 $color[c13849]
 $stop
 $endif
+
+
 

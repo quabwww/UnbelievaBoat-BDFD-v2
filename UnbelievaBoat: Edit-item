@@ -43,7 +43,7 @@ $authorIcon[$authorAvatar]
 $stop
 $stop
 $endtry
-$if[$or[$and[$message[1]==role-required;$or[$message[2]==$var[item];$message[2]=="$var[item]"]==true;$roleExists[$var[role]]==false]==true;$and[$or[$message[1]==value;$message[1]==price]==true;$or[$message[2]==$var[item];$message[2]=="$var[item]"]==true;$isNumber[$message[3]]==false]==true;$and[$message[1]==role-removed;$or[$message[2]==$var[item];$message[2]=="$var[item]"]==true;$roleExists[$var[role]]==false]==true;$and[$message[1]==required-balance;$or[$message[2]==$var[item];$message[2]=="$var[item]"]==true;$isNumber[$message[3]]==false]==true;$and[$message[1]==role-give;$or[$message[2]==$var[item];$message[2]=="$var[item]"]==true;$roleExists[$var[role]]==false]==true;$and[$message[1]==stock;$or[$message[2]==$var[item];$message[2]=="$var[item]"]==true;$isNumber[$message[3]]==false]==true]==true]
+$if[$or[$and[$checkContains[$message[1];role-required]==true;$or[$message[2]==$var[item];$message[2]=="$var[item]"]==true;$roleExists[$var[role]]==false]==true;$and[$or[$checkContains[$message[1];value]==true;$checkContains[$message[1];price]==true]==true;$or[$message[2]==$var[item];$message[2]=="$var[item]"]==true;$isNumber[$message[3]]==false]==true;$and[$checkContains[$message[1];role-removed]==true;$or[$message[2]==$var[item];$message[2]=="$var[item]"]==true;$roleExists[$var[role]]==false]==true;$and[$checkContains[$message[1];required-balance]==true;$or[$message[2]==$var[item];$message[2]=="$var[item]"]==true;$isNumber[$message[3]]==false]==true;$and[$checkContains[$message[1];role-give]==true;$or[$message[2]==$var[item];$message[2]=="$var[item]"]==true;$roleExists[$var[role]]==false]==true;$and[$checkContains[$message[1];stock]==true;$or[$message[2]==$var[item];$message[2]=="$var[item]"]==true;$isNumber[$message[3]]==false]==true]==true]
 
 $color[#c13849]
 $description[<:xmark:1104944860043165736>  Se proporcionó un argumento `<option>` no válido.]
@@ -53,22 +53,24 @@ $author[$username]
 $authorIcon[$authorAvatar]
 $color[#c13849]
 $stop
-$elseif[$and[$charCount[$var[convert]]>=30;$message[1]==name]==true]
+$elseif[$and[$charCount[$var[convert]]>=30;$checkContains[$message[1];name]==true]==true]
 $description[<:xmark:1104944860043165736>: La longitud máxima para el nombre de un elemento es 30 caracteres.]
 $author[$username]
 $authorIcon[$authorAvatar]
 $color[#c13849]
 $stop
-$elseif[$and[$charCount[$var[text]]>=60;$message[1]==description]==true]
+$elseif[$and[$charCount[$var[text]]>=60;$checkContains[$message[1];description]==true]==true]
 $description[<:xmark:1104944860043165736>: La longitud máxima para el description de un item es 60 caracteres.]
 $author[$username]
 $authorIcon[$authorAvatar]
 $color[#c13849]
 
-$elseif[$and[$or[$message[1]==role-give;$message[1]==role-required;$message[1]==role-removed]==true;$roleExists[$var[role]]==true;$or[$message[2]==$var[item];$message[2]=="$var[item]"]==true]==true]
+$elseif[$and[$or[$checkContains[$message[1];role-give]==true;$checkContains[$message[1];role-required]==true;$checkContains[$message[1];role-removed]==true]==true;$roleExists[$var[role]]==true;$or[$message[2]==$var[item];$message[2]=="$var[item]"]==true]==true]
 $if[$rolePosition[$highestRole[$botID]]>=$rolePosition[$var[role]]]
-$description[<:xmark:1104944860043165736> No puedo asignar este rol. 
-Por favor, suba mi rol.]
+$description[<:xmark:1104944860043165736> No puedo asignar este rol.]
+$addField[Error de roles;
+El rol <@&$findRole[$var[role]]> esta mal alto que el mio que es <@&$findRole[$highestRole[$botID]]>
+;false;1]
 $author[$username]
 $authorIcon[$authorAvatar]
 $color[#c13849]
@@ -78,7 +80,7 @@ $endif
 
 
 
-$if[$or[$message[1]==value;$message[1]==price]==true]
+$if[$or[$checkContains[$message[1];value]==true;$checkContains[$message[1];price]==true]==true]
 $if[$or[$message[2]=="$var[item]";$message[2]==$var[item]]==true]
 
 $jsonParse[$getServerVar[valor;$guildID]]
@@ -86,7 +88,7 @@ $jsonSetString[valor$var[ñ];$message[3]]
 $setServerVar[valor;$jsonStringify;$guildID]
 $endif
 
-$elseif[$message[1]==description]
+$elseif[$checkContains[$message[1];description]==true]
 $if[$or[$message[2]=="$var[item]";$message[2]==$var[item]]==true]
 
 $jsonParse[$getServerVar[descripcion]]
@@ -94,14 +96,14 @@ $jsonSetString[des$var[ñ];$var[text]]
 $setServerVar[descripcion;$jsonStringify;$guildID]
 $endif
 
-$elseif[$message[1]==required-balance]
+$elseif[$checkContains[$message[1];required-balance]==true]
 $if[$or[$message[2]=="$var[item]";$message[2]==$var[item]]==true]
 $jsonParse[$getServerVar[balance]]
 $jsonSetString[bal$var[ñ];$message[3]]
 $setServerVar[balance;$jsonStringify;$guildID]
 $endif
 
-$elseif[$message[1]==stock]
+$elseif[$checkContains[$message[1];stock]==true]
 $if[$or[$message[2]=="$var[item]";$message[2]==$var[item]]==true]
 
 $jsonParse[$getServerVar[stock]]
@@ -109,7 +111,7 @@ $jsonSetString[sto$var[ñ];$message[3]]
 $setServerVar[stock;$jsonStringify;$guildID]
 $endif
 
-$elseif[$message[1]==role-required]
+$elseif[$checkContains[$message[1];role-required]==true]
 $if[$or[$message[2]=="$var[item]";$message[2]==$var[item]]==true]
 
 $jsonParse[$getServerVar[requerido]]
@@ -117,14 +119,14 @@ $jsonSetString[reqrole$var[ñ];$var[role]]
 $setServerVar[requerido;$jsonStringify;$guildID]
 $endif
 
-$elseif[$message[1]==role-removed]
+$elseif[$checkContains[$message[1];role-removed]==true]
 $if[$or[$message[2]=="$var[item]";$message[2]==$var[item]]==true]
 $jsonParse[$getServerVar[quitar]]
 $jsonSetString[remover$var[ñ];$var[role]]
 $setServerVar[quitar;$jsonStringify;$guildID]
 $endif
 
-$elseif[$message[1]==role-give]
+$elseif[$checkContains[$message[1];role-give]==true]
 $if[$or[$message[2]=="$var[item]";$message[2]==$var[item]]==true]
 $jsonParse[$getServerVar[dar]]
 
@@ -132,7 +134,7 @@ $jsonSetString[give$var[ñ];$var[role]]
 $setServerVar[dar;$jsonStringify;$guildID]
 $endif
 
-$elseif[$message[1]==reply]
+$elseif[$checkContains[$message[1];reply]==true]
 $if[$or[$message[2]=="$var[item]";$message[2]==$var[item]]==true]
 $jsonParse[$getServerVar[reply]]
 
@@ -140,7 +142,7 @@ $jsonSetString[reply$var[ñ];$var[text]]
 $setServerVar[reply;$jsonStringify;$guildID]
 $endif
 
-$elseif[$message[1]==stock]
+$elseif[$checkContains[$message[1];stock]==true]
 $if[$or[$message[2]=="$var[item]";$message[2]==$var[item]]==true]
 $jsonParse[$getServerVar[stock]]
 
@@ -148,7 +150,7 @@ $jsonSetString[sto$var[ñ];$message[3]]
 $setServerVar[stock;$jsonStringify;$guildID]
 $endif
 
-$elseif[$message[1]==name]
+$elseif[$checkContains[$message[1];name]==true]
 $if[$or[$message[2]=="$var[item]";$message[2]==$var[item]]==true]
 
 $jsonParse[$getServerVar[item]]

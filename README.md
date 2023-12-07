@@ -19,21 +19,21 @@ Link: https://discord.gg/dru9uRYKqq
 
 Crealas tal y como esta, cada valor de variable es unico y necesario al igual que el nombre.
 
-|    Nombre     |  Valor  | 
-| --------------| ------- | 
-| item          |   {}    |
-| descripcion   |   {}    |
-| requerido     |   {}    |
-| dar           |   {}    |
-| quitar        |   {}    |
-| balance       |   {}    |
-| contador      |    1    |
-| valor         |   {}    |
-| stock         |   {}    |
-| reply         |   {}    |
-| currency      | :emoji: |
-| role-collect  |   {}    |
-| count-collect |   {}    |
+|    Nombre       |                      Valor                   | 
+| ----------------| -------------------------------------------- | 
+| item            |                        {}                    |
+| descripcion     |                        {}                    |
+| requerido       |                        {}                    |
+| dar             |                        {}                    |
+| quitar          |                        {}                    |
+| balance         |                        {}                    |
+| contador        |                         1                    |
+| valor           |                        {}                    |
+| stock           |                        {}                    |
+| reply           |                        {}                    |
+| currency        |                      :emoji:                 |
+| role-collect    |                        {}                    |
+| count-collect   |                        {}                    |
 | contador-replys |   {"work": "1", "crime": "1", "slut": "1"}   |
 
 __Importante__: Debes tener dos variables para complementar este codigo que seria tu "dinero" "banco" en economia.

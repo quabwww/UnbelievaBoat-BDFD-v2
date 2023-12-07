@@ -43,6 +43,7 @@ $var[{money};$getServerVar[currency]$random[1;1000]]
 $var[msg;$replaceText[$message;$message[1];]]
 
 $if[$message[1]==work]
+$footer[Reply #$getVar[reply-global]]
 $color[#6ab86e]
 $jsonParse[$getServerVar[contador-replys;$guildID]]
 $if[$json[work]==1]
@@ -220,6 +221,7 @@ $author[$username]
 $description[<:xmark:1104944860043165736> No puedes crear mas de 10 replys en la respuesta del work lo siento.]
 $endif
 $elseif[$message[1]==crime]
+$footer[Reply #$getVar[reply-global]]
 $color[#6ab86e]
 $jsonParse[$getServerVar[contador-replys;$guildID]]
 
@@ -370,6 +372,7 @@ $color[#ef5250]
 $stop
 $endif
 $elseif[$message[1]==slut]
+$footer[Reply #$getVar[reply-global]]
 $color[#6ab86e]
 $jsonParse[$getServerVar[contador-replys;$guildID]]
 

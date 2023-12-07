@@ -19,23 +19,25 @@ Link: https://discord.gg/dru9uRYKqq
 
 Crealas tal y como esta, cada valor de variable es unico y necesario al igual que el nombre.
 
-|    Nombre       |                                                 Valor                                                  | 
-| ----------------| -------------------------------------------------------------------------------------------------------| 
-| item            |                        {}                                                                              |
-| descripcion     |                        {}                                                                              |
-| requerido       |                        {}                                                                              |
-| dar             |                        {}                                                                              |
-| quitar          |                        {}                                                                              |
-| balance         |                        {}                                                                              |
-| contador        |                         1                                                                              |
-| valor           |                        {}                                                                              |
-| stock           |                        {}                                                                              |
-| reply           |                        {}                                                                              |
-| currency        |                      :emoji:                                                                           |
-| role-collect    |                        {}                                                                              |
-| count-collect   |                        {}                                                                              |
-| contador-replys |   {"work": "1", "crime": "1", "slut": "1"}                                                             |
-| contador-replys |{"minwork": "1", "maxwork": "100", "mincrime": "1", "maxcrime": "100", "minslut": "1", "maxslut": "100"}|
+|    Nombre              |                                                 Valor                                                  | 
+| -----------------------| -------------------------------------------------------------------------------------------------------| 
+| item                   |                        {}                                                                              |
+| descripcion            |                        {}                                                                              |
+| requerido              |                        {}                                                                              |
+| dar                    |                        {}                                                                              |
+| quitar                 |                        {}                                                                              |
+| balance                |                        {}                                                                              |
+| contador               |                         1                                                                              |
+| valor                  |                        {}                                                                              |
+| stock                  |                        {}                                                                              |
+| reply                  |                        {}                                                                              |
+| currency               |                      :emoji:                                                                           |
+| role-collect           |                        {}                                                                              |
+| count-collect          |                        {}                                                                              |
+| contador-replys        |   {"work": "1", "crime": "1", "slut": "1"}                                                             |
+| fallar contador-replys |   {"crime": "1", "slut": "1"}                                                             |
+| min-max-payout         |{"minwork": "1", "maxwork": "100", "mincrime": "1", "maxcrime": "100", "minslut": "1", "maxslut": "100"}|
+| min-max-fail           |{"minwork": "1", "maxwork": "100", "mincrime": "1", "maxcrime": "100", "minslut": "1", "maxslut": "100"}|
 
 __Importante__: Debes tener dos variables para complementar este codigo que seria tu "dinero" "banco" en economia.
 

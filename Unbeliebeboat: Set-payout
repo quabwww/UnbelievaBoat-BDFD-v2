@@ -1,0 +1,127 @@
+Prefix: !set-payout
+
+Codigo:
+$nomention 
+$author[$username]
+$authorIcon[$authorAvatar]
+
+$var[mon;$getServerVar[currency]]
+$jsonParse[$getServerVar[min-max-payout]]
+$var[maxwork;$json[maxwork]]
+$var[minwork,$json[minwork]]
+
+$if[$argCount[$message[1]]==0]
+$author[$username]
+$authorIcon[$authorAvatar]
+$description[Los rangos de pago se establecen en:
+
+`trabajo` - min: 20 max: 250 
+`slut` - min: 100 max: 400 
+`crime` - min: 250 max: 700 
+
+Uso: `set-payout <work | slut | crime> <min | max> <amount> `]
+$color[#4a7aff]
+$stop
+$elseif[$or[$checkContains[$message[1];work;crime;slut]==false;$checkContains[$message[2];min;max]==false;$message[1]==;$message[2]==]==true]
+$author[$username]
+$authorIcon[$authorAvatar]
+$description[<:xmark:1104944860043165736> Se dan muy pocos argumentos.]
+$addField[Uso:;
+ `pago establecido <work | slut | crime> <min | max> <amount> `]
+ $color[#c13849]
+$stop
+
+$elseif[$isNumber[$message[3]]==false]
+$author[$username]
+$authorIcon[$authorAvatar]
+$description[<:xmark:1104944860043165736> inválido `<amount>`.  argumento dado] 
+$addField[Uso:;
+ `!set-playout <work | slut | crime><min | max><amount> `]
+ $color[#c13849]
+$stop
+
+$endif
+
+
+$c[work payout]
+$if[$message[1]==work]
+$if[$message[2]==min]
+$if[$message[3]<$var[maxwork]]
+$description[La cantidad mínima para el comando `work` se ha establecido en: $var[mon]$message[3]]
+$color[#6ab86e]
+
+$jsonSetString[minwork;$message[3]]
+$setServerVar[min-max-payout;$jsonStringify]
+$else
+$description[No puedes poner la cantidad minima, mas alta o igual que la cantidad maxima que es $var[mon]$var[maxwork].]
+$color[#c13849]
+
+$endif
+$elseif[$message[2]==max]
+$if[$message[3]>$json[minwork]]
+$description[La cantidad maxima para el comando `work` se ha establecido en: $var[mon]$message[3]]
+$color[#6ab86e]
+$jsonSetString[maxwork;$message[3]]
+$setServerVar[min-max-payout;$jsonStringify]
+$else
+$description[No puedes poner la cantidad maxima, menos o igual que la cantidad minima que es $var[mon]$var[minwork].]
+$color[#c13849]
+$endif
+$endif
+
+$jsonParse[$getServerVar[min-max-payout]]
+
+$c[crime payout]
+$elseif[$message[1]==crime]
+$if[$message[2]==min]
+$if[$message[3]<$json[maxcrime]]
+$description[La cantidad mínima para el comando `work` se ha establecido en: $var[mon]$message[3]]
+$color[#6ab86e]
+
+$jsonSetString[mincrime;$message[3]]
+$setServerVar[min-max-payout;$jsonStringify]
+$else
+$description[No puedes poner la cantidad minima deo crime, mas alta o igual que la cantidad maxima que es $var[mon]$json[maxcrime].]
+$color[#c13849]
+
+$endif
+$elseif[$message[2]==max]
+$if[$message[3]>$json[mincrime]]
+$description[La cantidad maxima para el comando `work` se ha establecido en: $var[mon]$message[3]]
+$color[#6ab86e]
+$jsonSetString[maxcrime;$message[3]]
+$setServerVar[min-max-payout;$jsonStringify]
+$else
+$description[No puedes poner la cantidad maxima del crime, menos o igual que la cantidad minima que es $var[mon]$json[mincrime].]
+$color[#c13849]
+$endif
+$endif
+
+$jsonParse[$getServerVar[min-max-payout]]
+
+$c[slut payout]
+$elseif[$message[1]==slut]
+$if[$message[2]==min]
+$if[$message[3]<$json[maxslut]]
+$description[La cantidad mínima para el comando `work` se ha establecido en: $var[mon]$message[3]]
+$color[#6ab86e]
+
+$jsonSetString[minslut;$message[3]]
+$setServerVar[min-max-payout;$jsonStringify]
+$else
+$description[No puedes poner la cantidad minima del slut, mas alta o igual que la cantidad maxima que es $var[mon]$json[maxslut].]
+$color[#c13849]
+
+$endif
+$elseif[$message[2]==max]
+$if[$message[3]>$json[minslut]]
+$description[La cantidad maxima para el comando `work` se ha establecido en: $var[mon]$message[3]]
+$color[#6ab86e]
+$jsonSetString[maxslut;$message[3]]
+$setServerVar[min-max-payout;$jsonStringify]
+$else
+$description[No puedes poner la cantidad maxima del slut, menos o igual que la cantidad minima que es $var[mon]$json[minslut].]
+$color[#c13849]
+$endif
+$endif
+$endif

@@ -43,7 +43,8 @@ Crealas tal y como esta, cada valor de variable es unico y necesario al igual qu
 | reply-slut             |{}                                                                                                |
 | fallar-reply-crime             |{}                                                                                               |
 | fallar-reply-slut             |{}                                                                                                |
-| probality             |{"slut": "30", "crime": "40"}                                                                      |
+| probality             |{"slut": "30", "crime": "40"}                                                                      
+       |
 
 
 

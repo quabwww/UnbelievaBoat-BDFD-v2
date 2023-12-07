@@ -41,7 +41,6 @@ Crealas tal y como esta, cada valor de variable es unico y necesario al igual qu
 | reply-work             |{}                                                                                                |
 | reply-crime             |{}                                                                                               |
 | reply-slut             |{}                                                                                                |
-| fallar-reply-work             |{}                                                                                                |
 | fallar-reply-crime             |{}                                                                                               |
 | fallar-reply-slut             |{}                                                                                                |
 

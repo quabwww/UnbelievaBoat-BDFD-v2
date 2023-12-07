@@ -1,0 +1,48 @@
+Prefix: !default-replys
+
+Codigo:
+$nomention
+$var[ke;$if[$getServerVar[on/off-replys;$guildID]==yes]
+Habilitado
+$else
+Desabilitado
+$endif]
+
+$if[$checkUserPerms[$authorID;manageserver]==false]
+$authorIcon[$authorAvatar]
+$author[$username]
+$description[<:xmark:1104944860043165736> No tiene permiso para utilizar el comando `default-replys`. Falta: `Administrar servidor` o `Rol de comandante de bot`.]
+$color[#c13849]
+$stop
+$endif
+
+
+$if[$argCount[$message]==0]
+$authorIcon[$authorAvatar]
+$author[$username]
+$description[Las respuestas predeterminadas están $var[ke].
+Uso: `!default-replies <enable | disable>`]
+$color[4a7aff]
+
+$elseif[$or[$checkContains[$message;enable;disable]==false;$message==]==true]
+$authorIcon[$authorAvatar]
+$author[$username]
+$description[<:xmark:1104944860043165736> No válido `<enable | disable>` argumento dado.]
+$addField[Uso:;
+respuestas predeterminadas `<enable | disable>`]
+$color[c13849]
+$endif
+
+$if[$message[1]==enable]
+$authorIcon[$authorAvatar]
+$author[$username]
+$description[<:check:1104944814744682506> Se han habilitado las respuestas predeterminadas para `"work"`, `"slut"`, `"rob"` y `"crime"`.]
+$color[6ab86e]
+$setServerVar[on/off-replys;true;$guildID]
+$elseif[$message[1]==disable]
+$author[$username]
+$authorIcon[$authorAvatar]
+$description[<:check:1104944814744682506> Se han desabilitado las respuestas predeterminadas para `"work"`, `"slut"`, `"rob"` y `"crime"`.]
+$color[6ab86e]
+$setServerVar[on/off-replys;false;$guildID]
+$endif

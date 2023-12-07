@@ -38,8 +38,11 @@ Crealas tal y como esta, cada valor de variable es unico y necesario al igual qu
 | fallar-contador-replys |   {"crime": "1", "slut": "1"}                                                             |
 | min-max-payout         |{"minwork": "1", "maxwork": "100", "mincrime": "1", "maxcrime": "100", "minslut": "1", "maxslut": "100"}|
 | min-max-fail           |{"minwork": "1", "maxwork": "100", "mincrime": "1", "maxcrime": "100", "minslut": "1", "maxslut": "100"}|
-| reply-work           |{}                                                                                                  
+| reply-work             |{}                                                                                                
                          |
+
+
+
 
 __Importante__: Debes tener dos variables para complementar este codigo que seria tu "dinero" "banco" en economia.
 

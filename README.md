@@ -43,10 +43,8 @@ Crealas tal y como esta, cada valor de variable es unico y necesario al igual qu
 | reply-slut             |{}                                                                                                |
 | fallar-reply-crime             |{}                                                                                               |
 | fallar-reply-slut             |{}                                                                                                |
-| probality             |{"slut": "30", "crime": "40"}                                                                      
-       |
-| on/off-replys         |false                                                                                          
-       |
+| probality                     |{"slut": "30", "crime": "40"}                                                                     |
+| on/off-replys                 |false                                                                                             |
 
 
 __Importante__: Debes tener dos variables para complementar este codigo que seria tu "dinero" "banco" en economia.

@@ -1,0 +1,85 @@
+Prefix: !set-fail-rate
+
+Codigo:
+$nomention
+$nomention
+$if[$argCount[$message[1]]==0]
+$author[$username]
+$authorIcon[$authorAvatar]
+$description[Las tasas de fracaso se establecen en: 
+
+`slut` - 35 % 
+`crimen` - 60 % ]
+$addField[Uso:;
+`set-fail-rate <slut | crime> <percentage> `]
+$color[#4a7aff]
+$stop
+$elseif[$or[$checkContains[$message[1];crime;slut]==false;$message[1]==;$message[2]==]==true]
+$author[$username]
+$authorIcon[$authorAvatar]
+$description[<:xmark:1104944860043165736> Se dan muy pocos argumentos.]
+$addField[Uso:;
+ `pago establecido <slut | crime> <min | max> <amount> `]
+ $color[#c13849]
+$stop
+
+$elseif[$isNumber[$message[2]]==false]
+$author[$username]
+$authorIcon[$authorAvatar]
+$description[<:xmark:1104944860043165736> inválido `<amount>`.  argumento dado] 
+$addField[Uso:;
+ `!set-playout <work | slut | crime><min | max><amount> `]
+ $color[#c13849]
+$stop
+$elseif[$and[$isNumber[$message[2]]==true;$message[2]<10]==true]
+$author[$username]
+$authorIcon[$authorAvatar]
+$description[<:xmark:1104944860043165736> inválido `<amount>`. debes poner un porcentaje mayor a 10%] 
+$addField[Uso:;
+ `!set-playout <work | slut | crime><min | max> <amount mayor a 10%> `]
+
+ $color[#c13849]
+$stop
+$elseif[$and[$isNumber[$message[2]]==true;$message[2]==100]==true]
+$author[$username]
+$authorIcon[$authorAvatar]
+$description[<:xmark:1104944860043165736> inválido `<amount>`. No puedes poner el 100%.] 
+$addField[Uso:;
+ `!set-playout <work | slut | crime><min | max> <amount> `]
+
+ $color[#c13849]
+$stop
+$endif
+
+
+$if[$message[1]==crime]
+$if[$message[2]<80]
+$jsonParse[$getServerVar[probality]]
+$jsonSet[crime;$message[2]]
+$setServerVar[probality;$jsonStringify;$guildID]
+$description[<:check:1104944814744682506> La tasa de error para el comando `crime` se ha establecido en: $message[2]%]
+$color[#6ab86e]
+$else
+$author[$username]
+$authorIcon[$authorAvatar]
+$description[<:xmark:1104944860043165736> No puedes poner mas del 80% lo siento.]
+$color[#c13849]
+$stop
+$endif
+$endif
+
+$if[$message[1]==slut]
+$if[$message[2]<80]
+$jsonParse[$getServerVar[probality]]
+$jsonSet[slut;$message[2]]
+$setServerVar[probality;$jsonStringify;$guildID]
+$description[<:check:1104944814744682506> La tasa de error para el comando `crime` se ha establecido en: $message[2]%]
+$color[#6ab86e]
+$else
+$author[$username]
+$authorIcon[$authorAvatar]
+$description[<:xmark:1104944860043165736> No puedes poner mas del 80% lo siento.]
+$color[#c13849]
+$stop
+$endif
+$endif

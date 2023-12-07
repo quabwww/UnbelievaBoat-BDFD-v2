@@ -45,7 +45,7 @@ Crealas tal y como esta, cada valor de variable es unico y necesario al igual qu
 | fallar-reply-slut             |{}                                                                                                |
 | probality             |{"slut": "30", "crime": "40"}                                                                      
        |
-| on/off-replys             |false                                                                    
+| on/off-replys         |false                                                                                          
        |
 
 

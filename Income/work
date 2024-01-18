@@ -1,0 +1,43 @@
+Prefix: !work
+
+Codigo: 
+$nomention
+$c[deafult replies ⬇️]
+
+$if[$getServerVar[on/off-replys]==true]
+$var[array;$randomText[¡Es un logro increíble! Tu persistencia y dedicación en el proyecto han sido excepcionales. Como reconocimiento, te otorgamos {money}. ¡Sigue así, tu trabajo es realmente impresionante!;¡Tu esfuerzo ha sido verdaderamente excepcional! Te has destacado en cada paso del trabajo y como muestra de aprecio, te premiamos con {money}. ¡Tu contribución ha sido invaluable para el éxito del proyecto!;¡Enhorabuena por tu sobresaliente desempeño! Tu compromiso y habilidades han sido fundamentales para el logro de nuestros objetivos. Por eso, te otorgamos {money} como muestra de nuestro agradecimiento. ¡Continúa con tu excelente trabajo!;¡Tu dedicación no pasa desapercibida! Tu determinación y excelencia en el trabajo merecen ser recompensadas. Por ello, te brindamos {money}. ¡Sigue inspirando con tu entrega y profesionalismo!;¡Has superado todas las expectativas! Tu arduo trabajo y tu enfoque meticuloso han dado frutos. Como muestra de reconocimiento, te premiamos con {money}. ¡Tu compromiso es un ejemplo para todos!;¡Tu compromiso con la calidad es excepcional! Tu liderazgo y perseverancia han sido claves para el éxito del proyecto. Por eso, te premiamos con {money}. ¡Tu dedicación es un modelo a seguir para todos nosotros!;¡Tu dedicación incansable ha sido asombrosa! Has demostrado una ética de trabajo excepcional y como reconocimiento, te ofrecemos {money}. ¡Sigue brillando con tu profesionalismo y determinación!;¡Estás en otro nivel! Tu habilidad para enfrentar desafíos y tu consistente excelencia han sido notables. Por ello, te otorgamos {money} como muestra de nuestra admiración. ¡Tu trabajo es verdaderamente inspirador;¡Tu compromiso con la excelencia es extraordinario! Tu habilidad para superar obstáculos y tu dedicación han sido excepcionales. Como muestra de reconocimiento, te premiamos con {money}. ¡Tu trabajo es verdaderamente excepcional!]]
+$else
+
+$var[};\;]
+$jsonParse[$getServerVar[replywork;$guildID]]
+$var[n;1]
+
+$jsonArray[u]
+
+$eval[$repeatMessage[10;
+%{DOL}%if[%{DOL}%json[work%{DOL}%var[n\]\]==\]
+%{DOL}%jsonArrayAppend[u\;%{DOL}%optOff[%{DOL}%randomText[¡Felicidades! Has ganado {money} por tu excelente desempeño en el proyecto\;¡Eres un ganador! Tu esfuerzo ha sido recompensado con {money}.\;¡Increíble trabajo! Te has llevado {money} por destacarte en tu labor.\;¡Mereces un premio! Aquí tienes {money} por tu dedicación al trabajo.\;¡Enhorabuena! Te has ganado {money} por tu brillante contribución al proyecto.\]\]\]
+%{DOL}%else %{DOL}%jsonArrayAppend[u\;%{DOL}%json[work%{DOL}%var[n\]\]\]
+%{DOL}%endif
+%{DOL}%var[n\;%{DOL}%sum[%{DOL}%var[n\]\;1\]\]
+]]
+
+$var[array;$json[u;$random[0;$jsonArrayCount[u]]]]
+$endif
+
+$jsonParse[$getServerVar[min-max-payout]]
+$var[izana;$getServerVar[currency;$guildID]$random[$json[minwork];$json[maxwork]]]
+
+$description[$replaceText[$var[array];{money};$var[izana]]]
+$authorIcon[$authorAvatar]
+$author[$username]
+$color[#6ab86e]
+
+$setUserVar[dinero;$sum[$getUserVar[dinero];$random[$json[minwork];$json[maxwork]]];$authorID]
+
+
+
+$setVar[reply-global;$sum[$getVar[reply-global];1]]
+$footer[Reply #$getVar[reply-global]]
+
+$setUserVar[total;$sum[$getUserVar[dinero];$getUserVar[banco]];$authorID]

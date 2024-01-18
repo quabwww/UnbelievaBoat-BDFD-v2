@@ -1,0 +1,28 @@
+Prefix: !list-custom-replies
+
+Codigo:
+$nomention
+$authorIcon[$serverIcon[$guildID]]
+$var[mon;$random[1;100]$getServerVar[currency;$guildID]]
+
+
+
+$if[$message[1]==work]
+$author[⚙ Reply $toTitleCase[$message[1]]]
+
+
+$var[n;10]
+$jsonParse[$getServerVar[replywork]]
+
+$eval[$repeatMessage[10;
+%{DOL}%if[%{DOL}%json[work%{DOL}%var[n\]\]!=\]
+%{DOL}%var[array\;**%{DOL}%var[n\].** %{DOL}%cropText[%{DOL}%json[work%{DOL}%var[n\]\]\;20\;...\]|%{DOL}%var[array\]\]
+%{DOL}%endif
+%{DOL}%var[n\;%{DOL}%sub[%{DOL}%var[n\]\;1\]\]
+]]
+
+$textSplit[$var[array];|]
+$description[$replaceText[$joinSplitText[
+];{money};$var[mon]]]
+$endif
+$color[03a8f4]

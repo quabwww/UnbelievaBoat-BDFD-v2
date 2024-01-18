@@ -1,0 +1,65 @@
+Prefix: !set-cooldown
+
+Codigo:
+$nomention
+$author[$username]
+$authorIcon[$authorAvatar]
+
+$if[$charCount[$message]==0]
+$description[El tiempo de reutilización actual está establecido en:
+`work` - 1 hora 
+`slut` - 4 horas 
+`crimen` - 3 horas 
+`rob` - 2 horas 
+
+Uso: `set-cooldown <work | slut | crime | rob> <cooldown>`]
+$stop
+$elseif[$message[1]!=]
+$if[$message[1]==work]
+$var[value;$message[1]]
+$else
+$if[$message[1]==crime]
+$var[value;$message[1]]
+$else
+$if[$message[1]==slut]
+$var[value;$message[1]]
+$else
+$if[$message[1]==rob]
+$var[value;$message[1]]
+$else
+$var[value;false]
+$endif
+$endif
+$endif
+$endif
+$endif
+$if[$var[value]==false]
+$description[<:xmark:1104944860043165736> Se dan muy pocos argumentos. 
+
+Uso: `set-cooldown <work | slut | crime | rob> <UNIX>`]
+$stop
+$endif
+$textSplit[$message[2];]
+
+
+$if[$isNumber[$message[2]]==false]
+$description[<:xmark:1104944860043165736> No válido `<UNIX> `argumento dado. Asegúrese de especificar la unidad de tiempo. 
+
+Ejemplos: `3600 segundos` durante 1 hora, `13200` durante 3 horas 40 minutos.
+
+Uso: `set-cooldown <work | slut | crime | rob> <UNIX>`] 
+$stop
+$elseif[$trimSpace[$replaceText[$replaceText[$message;$message[1];];$message[2];]]!=]
+$description[<:xmark:1104944860043165736> No válido `<cooldown> `argumento dado. 
+
+Asegúrese de especificar la unidad de tiempo. Ejemplos: `1m` durante 1 minuto, `3h` durante 3 horas. 
+
+Uso: `set-cooldown <work | slut | crime | rob> <cooldown>`]
+$stop
+$endif
+$jsonParse[$getServerVar[cooldown;$guildID]]
+$jsonSetString[$var[value];$message[2]]
+$setServerVar[cooldown;$jsonStringify;$guildID]
+
+
+$description[<:check:1104944814744682506> Se cambió el tiempo de reutilización del comando `$var[value]` a: <t:$sum[$getTimestamp;$message[2]]:R>]

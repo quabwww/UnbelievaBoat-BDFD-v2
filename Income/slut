@@ -1,0 +1,102 @@
+Prefix: !slut
+
+$nomention
+
+$if[$getCooldown[normal]>0]
+$author[$username]
+$authorIcon[$authorAvatar]
+$color[#03a8f4]
+$description[No se puede cometer un delito durante <t:$sub[$getTimestamp;$getCooldown[normal]]:R>]
+$stop
+$else
+$var[mont;$getServerVar[currency;$guildID]]
+
+$if[$getServerVar[on/off-replys]==true]
+$var[array;Podiste vender a un precio accesible de {money}, Descansa un poco.$url[decode;%0A]¡Ja! te han follado mas de 4 veces y obtienes {money}. ¿tan puta eres?$url[decode;%0A]¡Que zorra! logras tener una noche con 2 hombres y ganas {money} mas propinas.$url[decode;%0A]¡Logras ir a discoteca y te acuesta con 30 hombres y ganas {money}, que puta!]
+$else
+$var[n;1]
+$jsonParse[$getServerVar[replyslut;$guildID]]
+
+$eval[$repeatMessage[10;
+%{DOL}%async[%{DOL}%var[n\]\]
+%{DOL}%if[%{DOL}%json[crime%{DOL}%var[n\]\]!=\]
+%{DOL}%var[array\;%{DOL}%json[crime%{DOL}%var[n\]\]$url[decode;%0A]%{DOL}%var[array\]\]
+%{DOL}%else
+$c[default replies crime]
+%{DOL}%var[array\;$optOff[$randomText[Podiste vender a un precio accesible de {money}, Descansa un poco.;¡Ja! te han follado mas de 4 veces y obtienes {money}. ¿tan puta eres?;¡Logras ir a discoteca y te acuesta con 30 hombres y ganas {money}, que puta!]]$url[decode;%0A]%{DOL}%var[array\]\]
+$c[default replies crime]
+%{DOL}%endif
+%{DOL}%endasync
+%{DOL}%await[%{DOL}%var[n\]\]
+%{DOL}%var[n\;%{DOL}%sum[%{DOL}%var[n\]\;1\]\]
+]]
+$endif
+$textSplit[$var[array];$url[decode;%0A]]
+
+$var[reply_work;$randomText[$unescape[$joinSplitText[;]]]]
+
+
+
+$if[$getServerVar[on/off-replys]==true]
+$var[array2;Sí, intenté tomar {money}, pero el sistema de seguridad era más fuerte de lo que pensaba. ¿Quién iba a saber que la puerta se abriría hacia adentro? ¡Definitivamente una lección aprendida!$url[decode;%0A]¡Oops! El robo de {money} no salió como lo planeado. Al parecer, subestimé la cantidad de cámaras de seguridad. Creo que es mejor dejar los robos para los videojuegos. ¿Cómo más puedo entretenerte hoy?$url[decode;%0A]Oh vaya, ¡mi intento de llevarme {money} resultó ser un curso intensivo sobre cómo no hacer un robo! Quién diría que el botón de alarma estaba justo al lado de la puerta. La seguridad es importante, ¿no?$url[decode;%0A]¡Ah, el gran plan para tomar {money}! Pero, sorpresa, la cerradura era electrónica y mis habilidades de hacking no estaban a la altura. ¡Quién diría que la tecnología sería mi mayor obstáculo! ¿Qué más puedo hacer por ti?]
+$else
+$jsonParse[$getServerVar[fallar-replyslut;$guildID]]
+$var[ñ;1]
+$eval[$repeatMessage[10;
+%{DOL}%async[ñ%{DOL}%var[ñ\]\]
+%{DOL}%if[%{DOL}%json[crime%{DOL}%var[ñ\]\]!=\]
+%{DOL}%var[array2\;%{DOL}%json[crime%{DOL}%var[ñ\]\]$url[decode;%0A]%{DOL}%var[array2\]\]
+%{DOL}%else
+$c[default fail replies crime]
+%{DOL}%var[array2\;$optOff[$randomText["¡Vaya, vaya! ¿{money} se ha esfumado al intentar robarlo? Mejor tener más cuidado la próxima vez.;Parece que al tratar de obtener {money}, ¡algo salió mal! Mejor suerte en tu próximo intento.;¡Ay, ay, ay! Intentar adquirir {money} te salió caro. Mejor reconsidera tus estrategias la próxima vez.;Parece que el destino quería que el dinero se quedara donde estaba. El robo de {money} fue un completo fracaso]]$url[decode;%0A]%{DOL}%var[array2\]\]
+$c[default fail replies crime]
+%{DOL}%endif
+%{DOL}%endasync
+%{DOL}%await[ñ%{DOL}%var[ñ\]\]
+%{DOL}%var[ñ\;%{DOL}%sum[%{DOL}%var[ñ\]\;1\]\]
+]]
+$endif
+$textSplit[$var[array2];$url[decode;%0A]]
+
+$var[fallar_reply_work;$randomText[$unescape[$joinSplitText[;]]]]
+
+
+
+$var[ran;$random[1;101]]
+$jsonParse[$getServerVar[probality;$guildID]]
+$if[$var[ran]<=$json[slut]]
+$authorIcon[$authorAvatar]
+$author[$username]
+
+$jsonParse[$getServerVar[min-max-fail]]
+$var[mon;$getServerVar[currency;$guildID]$random[$json[minslut];$json[maxslut]]]
+
+$description[$replaceText[$var[fallar_reply_work];{money};$var[mon]]]
+
+
+
+$setUserVar[dinero;$sub[$getUserVar[dinero;$authorID];$random[$json[minslut];$json[maxslut]]];$authorID]
+
+$setUserVar[total;$sub[$getUserVar[total];$random[$json[minslut];$json[maxslut]]];$authorID]
+$color[#c13849]
+$else
+$authorIcon[$authorAvatar]
+$author[$username]
+
+$jsonParse[$getServerVar[min-max-payout]]
+$var[mon;$getServerVar[currency;$guildID]$random[$json[minslut];$json[maxslut]]]
+
+$description[$replaceText[$var[reply_work];{money};$var[mon]]]
+
+$jsonParse[$getServerVar[min-max-payout]]
+
+$setUserVar[dinero;$sum[$getUserVar[dinero;$authorID];$random[$json[minslut];$json[maxslut]]];$authorID]
+$color[#6ab86e]
+$setUserVar[total;$sum[$getUserVar[dinero];$getUserVar[banco]];$authorID]
+
+$endif
+$endif
+
+$c[cooldonw time]
+$cooldown[1h;]
+$c[cooldonw time]

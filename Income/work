@@ -26,7 +26,7 @@ $var[array;$json[u;$random[0;$jsonArrayCount[u]]]]
 $endif
 
 $jsonParse[$getServerVar[min-max-payout]]
-$var[izana;$getServerVar[currency;$guildID]$random[$json[minwork];$json[maxwork]]]
+$var[izana;$getServerVar[currency;$guildID]$numberSeparator[$random[$json[minwork];$json[maxwork]]]]
 
 $description[$replaceText[$var[array];{money};$var[izana]]]
 $authorIcon[$authorAvatar]

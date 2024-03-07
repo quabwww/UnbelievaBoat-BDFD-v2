@@ -1,0 +1,51 @@
+Prefix: !with
+
+Codigo: 
+$nomention
+$author[$username]
+$authorIcon[$authorAvatar]
+$var[n;$message[1]]
+
+$if[$charCount[$var[n]]==0]
+$description[<:xc:1214587763245064233> Se dan muy pocos argumentos.]
+$addField[Uso:;`dep <amount or all> `;false;1]
+$color[c13849]
+$stop
+$elseif[$var[n]!=]
+$if[$and[$isNumber[$var[n]]==true;$var[n]==0]!=false]
+$description[<:xc:1214587763245064233> No puedes depositar $getServerVar[currency]0.;1]
+$color[c13849]
+$stop
+$endif
+$endif
+$if[$isNumber[$var[n]]==true]
+$var[tot;$var[n]]
+$if[$var[n]>=$getUserVar[dinero;$authorID]]
+$description[<:xmark:773218895150448640> No tienes tanto dinero para depositar. Actualmente tienes $getServerVar[currency;$guildID]$numberSeparator[$getUserVar[dinero;$authorID]] a mano.]
+$color[c13849]
+$stop
+$endif
+$else
+$if[$var[n]==all]
+$var[tot;$getUserVar[dinero;$authorID]]
+$if[$getUserVar[dinero;$authorID]<=0]
+$description[<:xmark:773218895150448640> No tienes dinero para depositar.]
+$color[c13849]
+$stop
+$endif
+$endif
+$endif
+
+$if[$var[tot]==]
+$description[<:xc:1214587763245064233> No válido `<amount or all> `argumento dado.]
+$addField[Uso:;
+`dep <amount or all>`;false;1]
+$color[#c13849]
+$stop
+$endif
+
+
+$color[#6ab86e]
+$description[<:check:773218860840648725> Depositó $getServerVar[currency;$guildID]$numberSeparator[$var[tot]] en su banco.;1]
+$setUserVar[dinero;$sub[$getUserVar[dinero];$var[tot]];$authorID]
+$setUserVar[banco;$sum[$getUserVar[banco];$var[tot]];$authorID]

@@ -129,7 +129,7 @@ No deceas copiar codigo por codigo?. No hay problema puedes crear un bot en Bot 
 
 **Nota:** Perdon si ves codigos inncesarios se havian usado para testear comandos.
 
-Share Code: gZ4lNta9barY57hfw0xvcppyz
+Share Code: Xgp63gUQ6rqPUAmLNf2G2JMRP
 
 **Tutorial:**
 
